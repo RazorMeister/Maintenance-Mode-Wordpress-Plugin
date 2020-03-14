@@ -8,8 +8,8 @@
 * Author: Tymoteusz `RazorMeister` Bartnik & Przemysław `lavar3l` Dominikowski
 * Author URI: http://razormeister.pl
 
-* License: MIT
-* License URI: https://github.com/RazorMeister/Maintenance-Mode-Wordpress-Plugin/blob/master/LICENSE
+* License: European Union Public Licence v. 1.2
+* License URI: https://github.com/RazorMeister/Maintenance-Mode-Wordpress-Plugin/blob/master/LICENSE.md
 **/
 
 namespace MaintenanceModePlugin;
