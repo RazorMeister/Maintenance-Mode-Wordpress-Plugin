@@ -90,7 +90,8 @@ class Admin extends BaseController
                 'page' => $this->pageName,
                 'section' => $this->prefix . 'generalSection',
                 'args' => [
-                    'label_for' => $this->prefix . 'ipWhitelist'
+                    'label_for' => $this->prefix . 'ipWhitelist',
+                    'placeholder' => 'Wpisz adresy ip po przecinku :)'
                 ]
             ],
         ];
