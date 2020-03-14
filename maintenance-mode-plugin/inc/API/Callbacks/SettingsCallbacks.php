@@ -25,6 +25,6 @@ class SettingsCallbacks
     {
         $value = esc_attr(get_option($args['label_for']));
 
-        echo '<input type="text" class="" name="'.$args['label_for'].'" value="'.$value.'" placeholder="Wpisz adresy ip oddzielone przecinkami">';
+        echo '<input type="text" class="" name="'.$args['label_for'].'" value="'.$value.'" placeholder="'.$args['placeholder'].'">';
     }
 }
