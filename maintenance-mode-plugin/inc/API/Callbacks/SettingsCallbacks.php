@@ -11,7 +11,7 @@ class SettingsCallbacks
 
     public function generalSection()
     {
-        echo 'Główna sekcja naszej wtyczki';
+        echo 'Główna sekcja naszej wtyczki :)';
     }
 
     public function checkboxField($args)
