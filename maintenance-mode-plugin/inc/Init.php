@@ -14,6 +14,7 @@ class Init extends BaseController
     public static function getServices()
     {
         return [
+            Base\Language::class,
             Pages\Admin::class,
             Base\SettingsLink::class,
             Base\Enqueue::class,
