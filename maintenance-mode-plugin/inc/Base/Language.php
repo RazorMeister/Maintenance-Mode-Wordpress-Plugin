@@ -11,6 +11,6 @@ class Language extends BaseController
 
     public function loadTextDomain()
     {
-        load_plugin_textdomain($this->pluginName, false, $this->pluginPath.'languages/');
+        load_plugin_textdomain($this->pluginName, false, basename($this->pluginPath).'/languages/');
     }
 }
