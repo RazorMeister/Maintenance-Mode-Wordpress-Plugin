@@ -251,9 +251,15 @@ body h1 {
     }
 }
 
+.wp-admin p input[type="checkbox"], .wp-admin p input[type="radio"], td > input[type="checkbox"] {
+    margin-top: 0;
+    display: none !important;
+}
+
 .tgl {
     display: none;
 }
+
 .tgl, .tgl:after, .tgl:before, .tgl *, .tgl *:after, .tgl *:before, .tgl + .tgl-btn {
     box-sizing: border-box;
 }
