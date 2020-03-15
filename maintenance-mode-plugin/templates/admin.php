@@ -1,6 +1,5 @@
 <script src="https://kit.fontawesome.com/77b6468d65.js" crossorigin="anonymous"></script>
-
-<h1>Maintenance Mode Plugin</h1>
+<h1 class="plugintitle-h1">Maintenance Mode Plugin</h1>
 <div class="tabs">
 
     <input type="radio" id="tab1" name="tab-control" checked>
@@ -73,4 +72,5 @@
             This work is licensed under the European Union Public License v. 1.2. For further details visit our <a href="https://github.com/RazorMeister/Maintenance-Mode-Wordpress-Plugin/blob/master/LICENSE.md">GitHub repo</a>.
         </section>
     </div>
+</div>
 </div>
