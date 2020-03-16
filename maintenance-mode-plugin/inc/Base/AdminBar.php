@@ -19,17 +19,16 @@ class AdminBar extends BaseController
     {
         global $wp_admin_bar;
 
-        $isEnabled = (get_option($this->prefix.'enabled') ? 'ON' : 'OFF');
         $isEnabled = get_option($this->prefix.'enabled');
 
         if ($isEnabled)
         {
-            $action = '<input type="checkbox" style="display: none" class="tgl tgl-flat" id="MMP_enabled" name="MMP_enabled" checked><label class="tgl-btn" for="MMP_enabled"></label>';
+            //$action = '<input type="checkbox" style="display: none" class="tgl tgl-flat" id="MMP_enabled" name="MMP_enabled" checked><label class="tgl-btn" for="MMP_enabled"></label>';
             $isEnabledLabel = '<span style="color:green">⬤</span>';
         }
         else
         {
-            $action = '<input type="checkbox" style="display: none" class="tgl tgl-flat" id="MMP_enabled" name="MMP_enabled"><label class="tgl-btn" for="MMP_enabled"></label>';
+            //$action = '<input type="checkbox" style="display: none" class="tgl tgl-flat" id="MMP_enabled" name="MMP_enabled"><label class="tgl-btn" for="MMP_enabled"></label>';
             $isEnabledLabel = '<span style="color:red">⭕</span>';
         }
 
