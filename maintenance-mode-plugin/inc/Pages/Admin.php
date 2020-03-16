@@ -13,6 +13,9 @@ class Admin extends BaseController
 
     public function register()
     {
+        if (!$this->isAdmin)
+            return;
+
         $this->settings = new SettingsApi();
         $this->settingsCallbacks = new SettingsCallbacks();
 
@@ -37,20 +40,14 @@ class Admin extends BaseController
 
     public function setSettings()
     {
-        $args = [
-            // General settings
-            [
-                'optionGroup' => $this->prefix . 'general',
-                'optionName' => $this->prefix . 'enabled',
-                'callback' => [$this->settingsCallbacks, 'generalSettings']
-            ],
-            [
-                'optionGroup' => $this->prefix . 'general',
-                'optionName' => $this->prefix . 'ipWhitelist',
-                'callback' => [$this->settingsCallbacks, 'generalSettings']
-            ],
+        $args = [];
 
-        ];
+        foreach ($this->pluginSettingsNames as $setting)
+            $args[] = [
+                'optionGroup' => $this->prefix . $setting,
+                'optionName' => $this->prefix . $setting,
+                'callback' => [$this->settingsCallbacks, $setting . 'Settings']
+            ];
 
         $this->settings->setSettings($args);
     }
@@ -61,8 +58,17 @@ class Admin extends BaseController
             [
                 'id' => $this->prefix . 'generalSection',
                 'title' => 'General settings',
-                'callback' => [$this->settingsCallbacks, 'generalSection'],
-                'page' => $this->pageName
+                'page' => $this->prefix . 'general'
+            ],
+            [
+                'id' => $this->prefix . 'ipManagementSection',
+                'title' => 'Ip management',
+                'page' => $this->prefix . 'ipManagement'
+            ],
+            [
+                'id' => $this->prefix . 'schedule',
+                'title' => 'Schedule',
+                'page' => $this->prefix . 'schedule'
             ]
         ];
 
@@ -74,24 +80,52 @@ class Admin extends BaseController
         $args = [
             // General settings
             [
-                'id' => $this->prefix . 'enabled',
+                'id' => 'enabled',
                 'title' => 'Włączony tryb maintence',
                 'callback' => [$this->settingsCallbacks, 'checkboxField'],
-                'page' => $this->pageName,
+                'page' => $this->prefix . 'general',
                 'section' => $this->prefix . 'generalSection',
                 'args' => [
-                    'label_for' => $this->prefix . 'enabled'
+                    'name' => 'enabled',
+                    'settings' => $this->prefix.'general'
                 ]
             ],
             [
-                'id' => $this->prefix . 'ipWhitelist',
-                'title' => 'Wykluczone adresy IP (po przecinku)',
+                'id' => 'title',
+                'title' => 'Tytuł strony',
                 'callback' => [$this->settingsCallbacks, 'textField'],
-                'page' => $this->pageName,
+                'page' =>$this->prefix . 'general',
                 'section' => $this->prefix . 'generalSection',
                 'args' => [
-                    'label_for' => $this->prefix . 'ipWhitelist',
-                    'placeholder' => 'Wpisz adresy ip po przecinku :)'
+                    'name' => 'title',
+                    'placeholder' => 'Moja strona',
+                    'settings' => $this->prefix.'general'
+                ]
+            ],
+            [
+                'id' => 'description',
+                'title' => 'Opis strony',
+                'callback' => [$this->settingsCallbacks, 'textarea'],
+                'page' => $this->prefix . 'general',
+                'section' => $this->prefix . 'generalSection',
+                'args' => [
+                    'name' => 'description',
+                    'placeholder' => 'Lore ipsum dolore sit amet itp.',
+                    'settings' => $this->prefix.'general'
+                ]
+            ],
+
+            // Ip management Settings
+            [
+                'id' => 'ipWhitelist',
+                'title' => 'Wykluczone adresy IP (po przecinku)',
+                'callback' => [$this->settingsCallbacks, 'textField'],
+                'page' => $this->prefix . 'ipManagement',
+                'section' => $this->prefix . 'ipManagementSection',
+                'args' => [
+                    'name' => 'ipWhitelist',
+                    'placeholder' => 'Wpisz adresy ip po przecinku :)',
+                    'settings' => $this->prefix.'ipManagement'
                 ]
             ],
         ];

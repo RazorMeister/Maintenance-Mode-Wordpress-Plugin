@@ -9,22 +9,46 @@ class SettingsCallbacks
         return $input;
     }
 
-    public function generalSection()
+    public function ipManagementSettings($input)
     {
-        echo 'Główna sekcja naszej wtyczki :)';
+        return $input;
+    }
+
+    public function scheduleSettings($input)
+    {
+        return $input;
     }
 
     public function checkboxField($args)
     {
-        $value = esc_attr(get_option($args['label_for']));
+        $value = $this->getOption($args);
 
-        echo '<input type="checkbox" style="display: none" class="tgl tgl-flat" id="'.$args['label_for'].'" ' . 'name="'.$args['label_for'].'" '.($value ? 'checked' : '').'>' . '<label class="tgl-btn"' . ' for="' . $args['label_for'] .'"></label>';
+        echo '<input type="checkbox" style="display: none" class="tgl tgl-flat" id="'.$args['name'].'" ' . 'name="'.$this->getFullName($args).'" '.($value ? 'checked' : '').'>' . '<label class="tgl-btn"' . ' for="' . $args['name'] .'"></label>';
     }
 
     public function textField($args)
     {
-        $value = esc_attr(get_option($args['label_for']));
+        $value = $this->getOption($args);
 
-        echo '<input type="text" class="" name="'.$args['label_for'].'" value="'.$value.'" placeholder="'.$args['placeholder'].'">';
+        echo '<input type="text" class="" name="'.$this->getFullName($args).'" value="'.$value.'" placeholder="'.$args['placeholder'].'">';
+    }
+
+    public function textarea($args)
+    {
+        $value = $this->getOption($args);
+
+        echo '<textarea class="" name="'.$this->getFullName($args).'" placeholder="'.$args['placeholder'].'">'.$value.'</textarea>';
+    }
+
+    private function getFullName($args)
+    {
+        return $args['settings'].'['.$args['name'].']';
+    }
+
+    private function getOption($args)
+    {
+        $value = get_option($args['settings']);
+        $value = (isset($value[$args['name']]) ? $value[$args['name']] : '');
+        return esc_attr($value);
     }
 }

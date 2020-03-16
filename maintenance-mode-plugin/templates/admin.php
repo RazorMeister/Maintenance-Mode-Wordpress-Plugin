@@ -2,10 +2,10 @@
 <h1 class="plugintitle-h1">Maintenance Mode Plugin</h1>
 <div class="tabs">
 
-    <input type="radio" id="tab1" name="tab-control" checked>
-    <input type="radio" id="tab2" name="tab-control">
-    <input type="radio" id="tab3" name="tab-control">
-    <input type="radio" id="tab4" name="tab-control">
+    <input type="radio" id="tab1" name="tab-control" class="tab-control" checked>
+    <input type="radio" id="tab2" name="tab-control" class="tab-control">
+    <input type="radio" id="tab3" name="tab-control" class="tab-control">
+    <input type="radio" id="tab4" name="tab-control" class="tab-control">
     <ul>
         <li title="<?php _e('Main Settings', $this->pluginName) ?>">
             <label for="tab1" role="button">
@@ -43,20 +43,39 @@
             <h2><?php _e('Main Settings', $this->pluginName) ?></h2>
             <form action="options.php" method="post">
             <?php
-            settings_fields($this->prefix . 'general');
-            do_settings_sections($this->pageName);
+                settings_fields($this->prefix . 'general');
+                do_settings_sections($this->prefix . 'general');
 
-            submit_button();
-            ?></section>
+                submit_button(null, 'primary', 'saveGeneral');
+            ?>
+            </form>
+        </section>
         <section>
             <h2><?php _e('IP Management', $this->pluginName) ?></h2>
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem quas adipisci a accusantium eius ut
             voluptatibus ad impedit nulla, ipsa qui. Quasi temporibus eos commodi aliquid impedit amet, similique nulla.
+            <form action="options.php" method="post">
+                <?php
+                settings_fields($this->prefix . 'ipManagement');
+                do_settings_sections($this->prefix . 'ipManagement');
+
+                submit_button(null, 'primary', 'saveIpManagement');
+                ?>
+            </form>
+        </section>
         </section>
         <section>
             <h2><?php _e('Schedule', $this->pluginName) ?></h2>
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam nemo ducimus eius, magnam error quisquam sunt
             voluptate labore, excepturi numquam! Alias libero optio sed harum debitis! Veniam, quia in eum.
+            <form action="options.php" method="post">
+                <?php
+                settings_fields($this->prefix . 'schedule');
+                do_settings_sections($this->prefix . 'schedule');
+
+                submit_button(null, 'primary', 'saveSchedule');
+                ?>
+            </form>
         </section>
         <section>
             <h2><?php _e('About plugin', $this->pluginName) ?></h2>

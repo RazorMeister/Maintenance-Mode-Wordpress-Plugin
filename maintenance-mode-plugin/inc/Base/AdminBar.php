@@ -19,7 +19,7 @@ class AdminBar extends BaseController
     {
         global $wp_admin_bar;
 
-        $isEnabled = get_option($this->prefix.'enabled');
+        $isEnabled = $this->options['enabled'];
 
         if ($isEnabled)
         {

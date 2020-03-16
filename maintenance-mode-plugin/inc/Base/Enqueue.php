@@ -9,7 +9,18 @@ class Enqueue extends BaseController
      */
     public function register()
     {
+
         add_action('admin_enqueue_scripts', [$this, 'enqueueAdmin']);
+        add_action('wp_enqueue_scripts', [$this, 'enqueueGlobal']);
+    }
+
+    /**
+     * Enqueue styles and scripts for maintenance mode page.
+     */
+    public function enqueueGlobal()
+    {
+        wp_enqueue_style('MaintenanceModePluginStyles', $this->pluginUrl.'assets/css/global-styles.css');
+        wp_enqueue_script('MaintenanceModePluginScripts', $this->pluginUrl.'assets/js/global-scripts.js');
     }
 
     /**

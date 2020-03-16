@@ -15,10 +15,12 @@ class Init extends BaseController
     {
         return [
             Base\Language::class,
-            Pages\Admin::class,
             Base\SettingsLink::class,
             Base\Enqueue::class,
             Base\AdminBar::class,
+
+            Pages\Admin::class,
+            Pages\Maintenance::class,
         ];
     }
 
