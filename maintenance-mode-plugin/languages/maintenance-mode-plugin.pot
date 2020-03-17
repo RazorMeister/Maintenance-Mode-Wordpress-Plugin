@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "Project-Id-Version: Maintenance Mode Plugin\n"
-"POT-Creation-Date: 2020-03-15 12:16+0100\n"
-"PO-Revision-Date: 2020-03-15 12:15+0100\n"
+"POT-Creation-Date: 2020-03-17 12:08+0100\n"
+"PO-Revision-Date: 2020-03-17 12:07+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -21,20 +21,90 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.js\n"
 
-#: templates/admin.php:11 templates/admin.php:16 templates/admin.php:44
+#: inc/Pages/Admin.php:33
+msgid "Maintenance mode plugin settings"
+msgstr ""
+
+#: inc/Pages/Admin.php:84
+msgid "Maintenance mode enabled"
+msgstr ""
+
+#: inc/Pages/Admin.php:95
+msgid "Site title"
+msgstr ""
+
+#: inc/Pages/Admin.php:101
+msgid "My very good website"
+msgstr ""
+
+#: inc/Pages/Admin.php:107
+msgid "Site description"
+msgstr ""
+
+#: inc/Pages/Admin.php:113
+msgid "This is my website description"
+msgstr ""
+
+#: inc/Pages/Admin.php:121
+msgid "Excluded Ip addresses (separated by comma)"
+msgstr ""
+
+#: templates/admin.php:10 templates/admin.php:15 templates/admin.php:43
 msgid "Main Settings"
 msgstr ""
 
-#: templates/admin.php:19 templates/admin.php:22 templates/admin.php:53
+#: templates/admin.php:18 templates/admin.php:21 templates/admin.php:54
 msgid "IP Management"
 msgstr ""
 
-#: templates/admin.php:25 templates/admin.php:28 templates/admin.php:58
+#: templates/admin.php:24 templates/admin.php:27 templates/admin.php:68
 msgid "Schedule"
 msgstr ""
 
-#: templates/admin.php:31 templates/admin.php:34 templates/admin.php:63
+#: templates/admin.php:30 templates/admin.php:33 templates/admin.php:81
 msgid "About plugin"
+msgstr ""
+
+#: templates/admin.php:82
+msgid ""
+"Maintenance Mode Plugin is a small plugin that replaces your website with a "
+"splash page which explains why it's offline and when you can expect it to be "
+"live again. It is possible to operate it manually or using schedule and IP "
+"whitelisting."
+msgstr ""
+
+#: templates/admin.php:84
+msgid "Authors"
+msgstr ""
+
+#: templates/admin.php:85
+msgid "Tymoteusz 'RazorMeister' Bartnik & Przemysław 'lavar3l' Dominikowski"
+msgstr ""
+
+#: templates/admin.php:87
+msgid "Repository"
+msgstr ""
+
+#: templates/admin.php:88
+msgid "Feel free to visit our"
+msgstr ""
+
+#: templates/admin.php:88
+msgid "GitHub repository!"
+msgstr ""
+
+#: templates/admin.php:90
+msgid "License"
+msgstr ""
+
+#: templates/admin.php:91
+msgid ""
+"This work is licensed under the European Union Public License v. 1.2. For "
+"further details visit our"
+msgstr ""
+
+#: templates/admin.php:91
+msgid "GitHub repo"
 msgstr ""
 
 #. Plugin Name of the plugin/theme

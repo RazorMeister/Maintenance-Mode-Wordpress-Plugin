@@ -52,7 +52,8 @@ class Maintenance extends BaseController
             || (defined('WP_CLI') && WP_CLI)
             || $this->isAdmin
             || is_user_logged_in()
-            || $this->isAllowedUrl())
+            || $this->isAllowedUrl()
+            || $this->isAllowedIp())
             return;
 
         $this->showMaintenancePage();
@@ -71,6 +72,37 @@ class Maintenance extends BaseController
                 return true;
 
         return false;
+    }
+
+    /**
+     * Check if user ip is allowed to see website.
+     *
+     * @return bool
+     */
+    private function isAllowedIp()
+    {
+        $whitelistedIps = explode(',', $this->options['ipWhitelist']);
+        if (!is_array($whitelistedIps))
+            $whitelistedIps = [];
+
+        return in_array($this->getUserIp(), $whitelistedIps);
+    }
+
+    /**
+     * Get user ip.
+     *
+     * @return mixed
+     */
+    private function getUserIp()
+    {
+        if (!empty($_SERVER['HTTP_CLIENT_IP']))
+            $ip = $_SERVER['HTTP_CLIENT_IP'];
+        elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR']))
+            $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+        else
+            $ip = $_SERVER['REMOTE_ADDR'];
+
+        return apply_filters('wpb_get_ip', $ip);
     }
 
     /**

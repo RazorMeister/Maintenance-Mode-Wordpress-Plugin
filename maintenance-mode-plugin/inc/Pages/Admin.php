@@ -30,7 +30,7 @@ class Admin extends BaseController
 
     public function addAdminPage()
     {
-        add_options_page('Włącz \ Wyłącz', 'Maintenance Mode Plugin', 'manage_options', $this->pageName, [$this, 'showAdminPage']);
+        add_options_page(__('Maintenance mode plugin settings'), 'Maintenance Mode Plugin', 'manage_options', $this->pageName, [$this, 'showAdminPage']);
     }
 
     public function showAdminPage()
@@ -81,7 +81,7 @@ class Admin extends BaseController
             // General settings
             [
                 'id' => 'enabled',
-                'title' => 'Włączony tryb maintence',
+                'title' => __('Maintenance mode enabled'),
                 'callback' => [$this->settingsCallbacks, 'checkboxField'],
                 'page' => $this->prefix . 'general',
                 'section' => $this->prefix . 'generalSection',
@@ -92,25 +92,25 @@ class Admin extends BaseController
             ],
             [
                 'id' => 'title',
-                'title' => 'Tytuł strony',
+                'title' => __('Site title'),
                 'callback' => [$this->settingsCallbacks, 'textField'],
                 'page' =>$this->prefix . 'general',
                 'section' => $this->prefix . 'generalSection',
                 'args' => [
                     'name' => 'title',
-                    'placeholder' => 'Moja strona',
+                    'placeholder' => __('My very good website'),
                     'settings' => $this->prefix.'general'
                 ]
             ],
             [
                 'id' => 'description',
-                'title' => 'Opis strony',
+                'title' => __('Site description'),
                 'callback' => [$this->settingsCallbacks, 'textarea'],
                 'page' => $this->prefix . 'general',
                 'section' => $this->prefix . 'generalSection',
                 'args' => [
                     'name' => 'description',
-                    'placeholder' => 'Lore ipsum dolore sit amet itp.',
+                    'placeholder' => __('This is my website description'),
                     'settings' => $this->prefix.'general'
                 ]
             ],
@@ -118,13 +118,13 @@ class Admin extends BaseController
             // Ip management Settings
             [
                 'id' => 'ipWhitelist',
-                'title' => 'Wykluczone adresy IP (po przecinku)',
+                'title' => __('Excluded Ip addresses (separated by comma)'),
                 'callback' => [$this->settingsCallbacks, 'textField'],
                 'page' => $this->prefix . 'ipManagement',
                 'section' => $this->prefix . 'ipManagementSection',
                 'args' => [
                     'name' => 'ipWhitelist',
-                    'placeholder' => 'Wpisz adresy ip po przecinku :)',
+                    'placeholder' => '127.0.0.0, 127.0.0.1',
                     'settings' => $this->prefix.'ipManagement'
                 ]
             ],
