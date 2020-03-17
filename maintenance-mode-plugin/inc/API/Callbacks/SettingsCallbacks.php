@@ -40,6 +40,13 @@ class SettingsCallbacks
         echo '<textarea class="" name="'.$this->getFullName($args).'" placeholder="'.$args['placeholder'].'">'.$value.'</textarea>';
     }
 
+    public function wpEditor($args)
+    {
+        $value = $this->getOption($args);
+        $editorId = $args['name'];
+        wp_editor($value, $editorId, ['textarea_name' => $this->getFullName($args)]);
+    }
+
     private function getFullName($args)
     {
         return $args['settings'].'['.$args['name'].']';

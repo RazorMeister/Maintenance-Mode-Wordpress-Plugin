@@ -105,7 +105,7 @@ class Admin extends BaseController
             [
                 'id' => 'description',
                 'title' => 'Site description',
-                'callback' => [$this->settingsCallbacks, 'textarea'],
+                'callback' => [$this->settingsCallbacks, 'wpEditor'],
                 'page' => $this->prefix . 'general',
                 'section' => $this->prefix . 'generalSection',
                 'args' => [

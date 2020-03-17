@@ -20,7 +20,7 @@
         <header>
             <h1><?php echo esc_attr($this->options['title']); ?></h1>
             <p>
-                <?php echo esc_attr($this->options['description']); ?>
+                <?php echo $this->options['description']; ?>
             </p>
         </header>
     </div>
