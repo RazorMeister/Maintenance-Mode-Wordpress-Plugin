@@ -79,16 +79,16 @@
         </section>
         <section>
             <h2><?php _e('About plugin', $this->pluginName) ?></h2>
-            <?php _e('Maintenance Mode Plugin is a small plugin that replaces your website with a splash page which explains why it\'s offline and when you can expect it to be live again. It is possible to operate it manually or using schedule and IP whitelisting.') ?>
+            <?php _e('Maintenance Mode Plugin is a small plugin that replaces your website with a splash page which explains why it\'s offline and when you can expect it to be live again. It is possible to operate it manually or using schedule and IP whitelisting.', $this->pluginName) ?>
 
-            <h3><?php _e('Authors') ?></h3>
-            <?php _e('Tymoteusz \'RazorMeister\' Bartnik & Przemysław \'lavar3l\' Dominikowski') ?>
+            <h3><?php _e('Authors', $this->pluginName) ?></h3>
+            <?php _e('Tymoteusz \'RazorMeister\' Bartnik & Przemysław \'lavar3l\' Dominikowski', $this->pluginName) ?>
 
-            <h3><?php _e('Repository') ?></h3>
-            <?php _e('Feel free to visit our') ?> <a href="https://github.com/RazorMeister/Maintenance-Mode-Wordpress-Plugin" target="_blank"><?php _e('GitHub repository!') ?></a>
+            <h3><?php _e('Repository', $this->pluginName) ?></h3>
+            <?php _e('Feel free to visit our', $this->pluginName) ?> <a href="https://github.com/RazorMeister/Maintenance-Mode-Wordpress-Plugin" target="_blank"><?php _e('GitHub repository!', $this->pluginName) ?></a>
 
-            <h3><?php _e('License') ?></h3>
-            <?php _e('This work is licensed under the European Union Public License v. 1.2. For further details visit our') ?> <a href="https://github.com/RazorMeister/Maintenance-Mode-Wordpress-Plugin/blob/master/LICENSE.md" target="_blank"><?php _e('GitHub repo') ?></a>.
+            <h3><?php _e('License', $this->pluginName) ?></h3>
+            <?php _e('This work is licensed under the European Union Public License v. 1.2. For further details visit our', $this->pluginName) ?> <a href="https://github.com/RazorMeister/Maintenance-Mode-Wordpress-Plugin/blob/master/LICENSE.md" target="_blank"><?php _e('GitHub repo', $this->pluginName) ?></a>.
         </section>
     </div>
 </div>
