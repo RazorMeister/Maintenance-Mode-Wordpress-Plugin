@@ -79,9 +79,9 @@
                     The most spectacular coming soon template!
                 </h1>
 
-                <p class="sub-title">
+                <div class="sub-title">
                     <?php echo $this->options['description']; ?>
-                </p>
+                </div>
             </div>
         </li>
         <!-- Flakes -->
