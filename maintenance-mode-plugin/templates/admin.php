@@ -54,6 +54,7 @@
             <h2><?php _e('IP Management', $this->pluginName) ?></h2>
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem quas adipisci a accusantium eius ut
             voluptatibus ad impedit nulla, ipsa qui. Quasi temporibus eos commodi aliquid impedit amet, similique nulla.
+            <h3>Twoje IP: <?php echo $this->userIp ?></h3>
             <form action="options.php" method="post">
                 <?php
                 settings_fields($this->prefix . 'ipManagement');

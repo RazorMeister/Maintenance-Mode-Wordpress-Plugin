@@ -85,24 +85,7 @@ class Maintenance extends BaseController
         if (!is_array($whitelistedIps))
             $whitelistedIps = [];
 
-        return in_array($this->getUserIp(), $whitelistedIps);
-    }
-
-    /**
-     * Get user ip.
-     *
-     * @return mixed
-     */
-    private function getUserIp()
-    {
-        if (!empty($_SERVER['HTTP_CLIENT_IP']))
-            $ip = $_SERVER['HTTP_CLIENT_IP'];
-        elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR']))
-            $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
-        else
-            $ip = $_SERVER['REMOTE_ADDR'];
-
-        return apply_filters('wpb_get_ip', $ip);
+        return in_array($this->userIp, $whitelistedIps);
     }
 
     /**

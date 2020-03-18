@@ -13,6 +13,7 @@ class BaseController
     protected $isAdmin;
     protected $pluginSettingsNames = ['general', 'ipManagement', 'schedule'];
     protected $options;
+    protected $userIp;
 
     /**
      * BaseController constructor.
@@ -25,6 +26,7 @@ class BaseController
         $this->pageName = $this->prefix.'index';
         $this->isAdmin = is_admin();
         $this->options = $this->getOptions();
+        $this->userIp = $this->getUserIp();
     }
 
     /**
@@ -44,5 +46,22 @@ class BaseController
         }
 
         return $options;
+    }
+
+    /**
+     * Get user ip.
+     *
+     * @return mixed
+     */
+    private function getUserIp()
+    {
+        if (!empty($_SERVER['HTTP_CLIENT_IP']))
+            $ip = $_SERVER['HTTP_CLIENT_IP'];
+        elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR']))
+            $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+        else
+            $ip = $_SERVER['REMOTE_ADDR'];
+
+        return apply_filters('wpb_get_ip', $ip);
     }
 }
