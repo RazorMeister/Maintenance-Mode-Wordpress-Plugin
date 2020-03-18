@@ -2,10 +2,10 @@
 <h1 class="plugintitle-h1">Maintenance Mode Plugin</h1>
 <div class="tabs">
 
-    <input type="radio" id="tab1" name="tab-control" class="tab-control" checked>
-    <input type="radio" id="tab2" name="tab-control" class="tab-control">
-    <input type="radio" id="tab3" name="tab-control" class="tab-control">
-    <input type="radio" id="tab4" name="tab-control" class="tab-control">
+    <input type="radio" id="tab1" name="tab-control" class="tab-control" <?php if(isset($_COOKIE['MMP_currentTabId']) && $_COOKIE['MMP_currentTabId'] == 'tab1') echo 'checked'; ?>>
+    <input type="radio" id="tab2" name="tab-control" class="tab-control" <?php if(isset($_COOKIE['MMP_currentTabId']) && $_COOKIE['MMP_currentTabId'] == 'tab2') echo 'checked'; ?>>
+    <input type="radio" id="tab3" name="tab-control" class="tab-control" <?php if(isset($_COOKIE['MMP_currentTabId']) && $_COOKIE['MMP_currentTabId'] == 'tab3') echo 'checked'; ?>>
+    <input type="radio" id="tab4" name="tab-control" class="tab-control" <?php if(isset($_COOKIE['MMP_currentTabId']) && $_COOKIE['MMP_currentTabId'] == 'tab4') echo 'checked'; ?>>
     <ul>
         <li title="<?php _e('Main Settings', $this->pluginName) ?>">
             <label for="tab1" role="button">

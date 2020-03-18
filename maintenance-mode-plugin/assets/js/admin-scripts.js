@@ -5,9 +5,6 @@ window.addEventListener("load", function(){
 
     let tabIndex = getCookie(COOKIE_NAME);
 
-    if (tabIndex != "" && tabIndex != "tab1")
-        document.getElementById(tabIndex).checked = true;
-
     for (let i = 0; i < tabs.length; i++)
         tabs[i].addEventListener("click", switchTab);
 
