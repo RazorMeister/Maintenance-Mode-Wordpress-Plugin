@@ -3,6 +3,7 @@
 namespace MaintenanceModePlugin\Inc\Pages;
 
 use MaintenanceModePlugin\Inc\Base\BaseController;
+use MaintenanceModePlugin\Inc\Extra\Theme;
 
 class Maintenance extends BaseController
 {
@@ -93,6 +94,7 @@ class Maintenance extends BaseController
      */
     public function showMaintenancePage()
     {
-        require_once $this->pluginPath.'/templates/maintenancePage.php';
+        $theme = new Theme($this->options['theme']);
+        $theme->render();
     }
 }

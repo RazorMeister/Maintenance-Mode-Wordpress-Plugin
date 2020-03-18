@@ -47,6 +47,12 @@ class SettingsCallbacks
         wp_editor($value, $editorId, ['textarea_name' => $this->getFullName($args)]);
     }
 
+    public function selectTheme($args)
+    {
+        echo "Wybierz motyw";
+    }
+
+
     private function getFullName($args)
     {
         return $args['settings'].'['.$args['name'].']';
