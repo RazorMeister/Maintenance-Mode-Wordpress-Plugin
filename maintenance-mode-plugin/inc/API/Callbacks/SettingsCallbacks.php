@@ -42,7 +42,7 @@ class SettingsCallbacks
 
     public function wpEditor($args)
     {
-        $value = $this->getOption($args);
+        $value = $this->getOption($args, false);
         $editorId = $args['name'];
         wp_editor($value, $editorId, ['textarea_name' => $this->getFullName($args)]);
     }
@@ -52,10 +52,10 @@ class SettingsCallbacks
         return $args['settings'].'['.$args['name'].']';
     }
 
-    private function getOption($args)
+    private function getOption($args, $escAttr = true)
     {
         $value = get_option($args['settings']);
         $value = (isset($value[$args['name']]) ? $value[$args['name']] : '');
-        return esc_attr($value);
+        return $escAttr ? esc_attr($value) : $value;
     }
 }
