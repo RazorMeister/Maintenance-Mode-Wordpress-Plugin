@@ -4,7 +4,7 @@ msgstr ""
 "&&(n%100<10||n%100 >= 20)? 1 : 2);\n"
 "Project-Id-Version: Maintenance Mode Plugin\n"
 "POT-Creation-Date: 2020-03-17 12:08+0100\n"
-"PO-Revision-Date: 2020-03-17 18:06+0000\n"
+"PO-Revision-Date: 2020-03-17 17:56+0000\n"
 "Last-Translator: 4pancerni <battnik90@gmail.com>\n"
 "Language-Team: Polski\n"
 "MIME-Version: 1.0\n"
@@ -26,7 +26,7 @@ msgstr ""
 
 #: inc/Pages/Admin.php:33
 msgid "Maintenance mode plugin settings"
-msgstr "Tytuł strony"
+msgstr ""
 
 #: inc/Pages/Admin.php:84
 msgid "Maintenance mode enabled"
