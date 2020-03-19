@@ -81,62 +81,67 @@ class Admin extends BaseController
             // General settings
             [
                 'id' => 'enabled',
-                'title' => 'Maintenance mode enabled',
+                'title' => __('Maintenance mode enabled', $this->pluginName),
                 'callback' => [$this->settingsCallbacks, 'checkboxField'],
                 'page' => $this->prefix . 'general',
                 'section' => $this->prefix . 'generalSection',
                 'args' => [
                     'name' => 'enabled',
-                    'settings' => $this->prefix.'general'
+                    'settings' => $this->prefix.'general',
+                    'description' => __('Opisik', $this->pluginName)
                 ]
             ],
             [
                 'id' => 'theme',
-                'title' => 'Select theme',
+                'title' => __('Select theme', $this->pluginName),
                 'callback' => [$this->settingsCallbacks, 'selectTheme'],
                 'page' => $this->prefix . 'general',
                 'section' => $this->prefix . 'generalSection',
                 'args' => [
                     'name' => 'theme',
-                    'settings' => $this->prefix.'general'
+                    'settings' => $this->prefix.'general',
+                    'description' => __('Opisik', $this->pluginName)
                 ]
             ],
             [
                 'id' => 'title',
-                'title' =>'Site title',
+                'title' => __('Site title', $this->pluginName),
                 'callback' => [$this->settingsCallbacks, 'textField'],
                 'page' =>$this->prefix . 'general',
                 'section' => $this->prefix . 'generalSection',
                 'args' => [
                     'name' => 'title',
                     'placeholder' => 'My very good website', $this->pluginName,
-                    'settings' => $this->prefix.'general'
+                    'settings' => $this->prefix.'general',
+                    'description' => __('Opisik', $this->pluginName)
                 ]
             ],
             [
                 'id' => 'description',
-                'title' => 'Site description',
+                'title' => __('Site description', $this->pluginName),
                 'callback' => [$this->settingsCallbacks, 'wpEditor'],
                 'page' => $this->prefix . 'general',
                 'section' => $this->prefix . 'generalSection',
                 'args' => [
                     'name' => 'description',
                     'placeholder' => 'This is my website description',
-                    'settings' => $this->prefix.'general'
+                    'settings' => $this->prefix.'general',
+                    'description' => __('Opisik', $this->pluginName)
                 ]
             ],
 
             // Ip management Settings
             [
                 'id' => 'ipWhitelist',
-                'title' => 'Excluded Ip addresses (separated by comma)',
+                'title' => __('Excluded Ip addresses (separated by comma)', $this->pluginName),
                 'callback' => [$this->settingsCallbacks, 'textField'],
                 'page' => $this->prefix . 'ipManagement',
                 'section' => $this->prefix . 'ipManagementSection',
                 'args' => [
                     'name' => 'ipWhitelist',
                     'placeholder' => '127.0.0.0, 127.0.0.1',
-                    'settings' => $this->prefix.'ipManagement'
+                    'settings' => $this->prefix.'ipManagement',
+                    'description' => __('Opisik', $this->pluginName)
                 ]
             ],
         ];

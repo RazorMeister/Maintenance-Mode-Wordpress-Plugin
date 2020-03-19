@@ -26,6 +26,8 @@ class SettingsCallbacks extends BaseController
         $value = $this->getOption($args);
 
         echo '<input type="checkbox" style="display: none" class="tgl tgl-flat" id="'.$args['name'].'" ' . 'name="'.$this->getFullName($args).'" '.($value ? 'checked' : '').'>' . '<label class="tgl-btn"' . ' for="' . $args['name'] .'"></label>';
+
+        $this->addDescription($args);
     }
 
     public function textField($args)
@@ -33,6 +35,8 @@ class SettingsCallbacks extends BaseController
         $value = $this->getOption($args);
 
         echo '<input type="text" class="" name="'.$this->getFullName($args).'" value="'.$value.'" placeholder="'.$args['placeholder'].'">';
+
+        $this->addDescription($args);
     }
 
     public function textarea($args)
@@ -40,10 +44,14 @@ class SettingsCallbacks extends BaseController
         $value = $this->getOption($args);
 
         echo '<textarea class="" name="'.$this->getFullName($args).'" placeholder="'.$args['placeholder'].'">'.$value.'</textarea>';
+
+        $this->addDescription($args);
     }
 
     public function wpEditor($args)
     {
+        $this->addDescription($args);
+
         $value = $this->getOption($args, false);
         $editorId = $args['name'];
         wp_editor($value, $editorId, ['textarea_name' => $this->getFullName($args)]);
@@ -52,6 +60,8 @@ class SettingsCallbacks extends BaseController
     public function selectTheme($args)
     {
         $value = $this->getOption($args);
+
+        $this->addDescription($args);
 
         echo '<div class="choose-theme">';
 
@@ -93,6 +103,12 @@ class SettingsCallbacks extends BaseController
                 $dir[$file] = require_once $this->pluginPath.'templates/themes/'.$file.'/info.php';
 
         return $dir;
+    }
+
+    private function addDescription($args)
+    {
+        if (isset($args['description']))
+            echo '<p class="input-description">'.__($args['description'], $this->pluginName).'</p>';
     }
 
 }
