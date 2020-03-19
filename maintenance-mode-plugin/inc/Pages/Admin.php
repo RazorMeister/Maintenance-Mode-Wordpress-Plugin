@@ -93,7 +93,7 @@ class Admin extends BaseController
             [
                 'id' => 'theme',
                 'title' => 'Select theme',
-                'callback' => [$this->settingsCallbacks, 'textField'],
+                'callback' => [$this->settingsCallbacks, 'selectTheme'],
                 'page' => $this->prefix . 'general',
                 'section' => $this->prefix . 'generalSection',
                 'args' => [

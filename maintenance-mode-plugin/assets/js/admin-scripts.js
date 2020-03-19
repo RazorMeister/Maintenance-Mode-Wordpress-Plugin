@@ -1,6 +1,6 @@
 const COOKIE_NAME = 'MMP_currentTabId';
 
-window.addEventListener("load", function(){
+$(document).ready(function(){
     let tabs = document.querySelectorAll(".tabs .tab-control");
 
     let tabIndex = getCookie(COOKIE_NAME);
@@ -12,6 +12,23 @@ window.addEventListener("load", function(){
     {
         setCookie(COOKIE_NAME, event.currentTarget.id, 2);
     }
+
+    $('[data-toggle="select-theme"]').click(function(){
+        if( $(this).hasClass('active')){
+            $(this).removeClass('active');
+            $(this).find('[type="checkbox"]').removeAttr('checked');
+        } else {
+            let current = this.id;
+            $(this).addClass('active');
+            $(this).find('[type="checkbox"]').attr('checked','true');
+            $('[data-toggle="select-theme"]').each(function() {
+                if (this.id != current && $(this).hasClass('active')) {
+                    $(this).removeClass('active');
+                    $(this).find('[type="checkbox"]').removeAttr('checked');
+                }
+            })
+        }
+    });
 });
 
 /**

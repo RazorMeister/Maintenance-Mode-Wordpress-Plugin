@@ -29,6 +29,7 @@ class Enqueue extends BaseController
     public function enqueueAdmin()
     {
         wp_enqueue_style('MaintenanceModePluginAdminStyles', $this->pluginUrl.'assets/css/admin-styles.css');
+        wp_enqueue_script('MaintenanceModePluginAdminJquery', $this->pluginUrl.'assets/js/jquery.min.js');
         wp_enqueue_script('MaintenanceModePluginAdminScripts', $this->pluginUrl.'assets/js/admin-scripts.js');
     }
 }
