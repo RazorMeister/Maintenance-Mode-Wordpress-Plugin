@@ -10,6 +10,11 @@ class Theme extends BaseController
     private $themePath;
     private $themeUrl;
 
+    /**
+     * Theme constructor.
+     *
+     * @param $themeName
+     */
     public function __construct($themeName)
     {
         parent::__construct();
@@ -22,8 +27,15 @@ class Theme extends BaseController
         $this->themeUrl = $this->pluginUrl.'/templates/themes/'.$this->themeName.'/';
     }
 
+    /**
+     * Render current chosen theme.
+     */
     public function render()
     {
-        require_once $this->themePath.'/index.php';
+        try {
+            require_once $this->themePath.'/index.php';
+        } catch (\Exception $e) {
+            echo __('Error while loading theme: ').$this->themeName;
+        }
     }
 }

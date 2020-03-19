@@ -64,4 +64,11 @@ class SettingsCallbacks
         $value = (isset($value[$args['name']]) ? $value[$args['name']] : '');
         return $escAttr ? esc_attr($value) : $value;
     }
+
+    private function getThemes()
+    {
+        
+
+    }
+
 }
