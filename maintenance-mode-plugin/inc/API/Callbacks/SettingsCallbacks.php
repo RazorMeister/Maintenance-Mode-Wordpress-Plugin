@@ -18,7 +18,36 @@ class SettingsCallbacks extends BaseController
 
     public function scheduleSettings($input)
     {
-        return $input;
+        $newInput = [];
+        $oldStarts = $this->options['dateStart'];
+        $oldEnds = $this->options['dateEnd'];
+
+        if (!is_array($oldStarts))
+            $oldStarts = [];
+        if (!is_array($oldEnds))
+            $oldEnds = [];
+
+        $newInput['dateStart'] = $oldStarts;
+        $newInput['dateEnd'] = $oldEnds;
+
+        if ($input['dateStart'] && $input['dateEnd']) {
+            $dateStart = explode('T', $input['dateStart']);
+            $dateStart = array_merge(explode('-', $dateStart[0]), explode(':', $dateStart[1]));
+            $timeStart = mktime($dateStart[3], $dateStart[4], 0, $dateStart[1], $dateStart[2], $dateStart[0]);
+
+            $dateEnd = explode('T', $input['dateEnd']);
+            $dateEnd = array_merge(explode('-', $dateEnd[0]), explode(':', $dateEnd[1]));
+            $timeEnd = mktime($dateEnd[3], $dateEnd[4], 0, $dateEnd[1], $dateEnd[2], $dateEnd[0]);
+
+            if ($timeEnd > $timeStart) {
+                $newInput['dateStart'][] = $input['dateStart'];
+                $newInput['dateEnd'][] = $input['dateEnd'];
+            } else
+                add_settings_error('scheduleSettings', 'scheduleErrorEndLowerStart', 'Data zakończenia nie może być wcześniej niż data rozpoczęcia!');
+        } else
+            add_settings_error('scheduleSettings', 'scheduleErrorEmpty', 'Musisz podać datę początku i końca!');
+
+        return $newInput;
     }
 
     public function checkboxField($args)
@@ -77,6 +106,11 @@ class SettingsCallbacks extends BaseController
         }
 
         echo '</div>';
+    }
+
+    public function scheduleField($args)
+    {
+        echo '<input type="datetime-local" class="" min="'.date('Y-m-d').'T'.date('H:i').'" name="'.$this->getFullName($args).'">';
     }
 
     private function getFullName($args)

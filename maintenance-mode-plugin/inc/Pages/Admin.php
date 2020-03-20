@@ -66,7 +66,7 @@ class Admin extends BaseController
                 'page' => $this->prefix . 'ipManagement'
             ],
             [
-                'id' => $this->prefix . 'schedule',
+                'id' => $this->prefix . 'scheduleSection',
                 'title' => 'Schedule',
                 'page' => $this->prefix . 'schedule'
             ]
@@ -141,6 +141,32 @@ class Admin extends BaseController
                     'name' => 'ipWhitelist',
                     'placeholder' => '127.0.0.0, 127.0.0.1',
                     'settings' => $this->prefix.'ipManagement',
+                    'description' => __('Opisik', $this->pluginName)
+                ]
+            ],
+
+            // Schedule Settings
+            [
+                'id' => 'dateStart',
+                'title' => __('Date of starting maintenance mode', $this->pluginName),
+                'callback' => [$this->settingsCallbacks, 'scheduleField'],
+                'page' => $this->prefix . 'schedule',
+                'section' => $this->prefix . 'scheduleSection',
+                'args' => [
+                    'name' => 'dateStart',
+                    'settings' => $this->prefix.'schedule',
+                    'description' => __('Opisik', $this->pluginName)
+                ]
+            ],
+            [
+                'id' => 'dateEnd',
+                'title' => __('Date of ending maintenance mode', $this->pluginName),
+                'callback' => [$this->settingsCallbacks, 'scheduleField'],
+                'page' => $this->prefix . 'schedule',
+                'section' => $this->prefix . 'scheduleSection',
+                'args' => [
+                    'name' => 'dateEnd',
+                    'settings' => $this->prefix.'schedule',
                     'description' => __('Opisik', $this->pluginName)
                 ]
             ],

@@ -69,6 +69,18 @@
             <h2><?php _e('Schedule', $this->pluginName) ?></h2>
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam nemo ducimus eius, magnam error quisquam sunt
             voluptate labore, excepturi numquam! Alias libero optio sed harum debitis! Veniam, quia in eum.
+            <div class="current-schedules">
+                <table class="table" border="1">
+                    <tr>
+                        <td>Data start</td>
+                        <td>Data end</td>
+                    </tr>
+                    <?php
+                        for($i=0;$i<count($this->options['dateStart']); $i++)
+                            echo '<tr><td>'.str_replace('T', ' ', $this->options['dateStart'][$i]).'</td><td>'.str_replace('T', ' ', $this->options['dateEnd'][$i]).'</td></tr>';
+                        ?>
+                </table>
+            </div>
             <form action="options.php" method="post">
                 <?php
                 settings_fields($this->prefix . 'schedule');
