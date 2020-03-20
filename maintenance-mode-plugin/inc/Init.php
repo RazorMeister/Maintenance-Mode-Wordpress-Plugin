@@ -4,7 +4,7 @@ namespace MaintenanceModePlugin\Inc;
 
 use MaintenanceModePlugin\Inc\Base\BaseController;
 
-class Init extends BaseController
+class Init
 {
     /**
      * Store all classes inside an array.
@@ -18,6 +18,7 @@ class Init extends BaseController
             Base\SettingsLink::class,
             Base\Enqueue::class,
             Base\AdminBar::class,
+            Base\CheckSchedule::class,
 
             Pages\Admin::class,
             Pages\Maintenance::class,

@@ -82,7 +82,7 @@ class Admin extends BaseController
             [
                 'id' => 'enabled',
                 'title' => __('Maintenance mode enabled', $this->pluginName),
-                'callback' => [$this->settingsCallbacks, 'checkboxField'],
+                'callback' => [$this->settingsCallbacks, 'enableField'],
                 'page' => $this->prefix . 'general',
                 'section' => $this->prefix . 'generalSection',
                 'args' => [

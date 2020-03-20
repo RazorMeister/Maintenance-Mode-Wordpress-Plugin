@@ -14,6 +14,8 @@ class BaseController
     protected $pluginSettingsNames = ['general', 'ipManagement', 'schedule'];
     protected $options;
     protected $userIp;
+    public static $isSchedule = false;
+    public static $scheduleEnd;
 
     /**
      * BaseController constructor.

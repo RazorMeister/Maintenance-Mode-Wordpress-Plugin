@@ -40,23 +40,37 @@ class SettingsCallbacks extends BaseController
             $timeEnd = mktime($dateEnd[3], $dateEnd[4], 0, $dateEnd[1], $dateEnd[2], $dateEnd[0]);
 
             if ($timeEnd > $timeStart) {
-                $newInput['dateStart'][] = $input['dateStart'];
-                $newInput['dateEnd'][] = $input['dateEnd'];
+                $newInput['dateStart'][] = $timeStart;
+                $newInput['dateEnd'][] = $timeEnd;
             } else
                 add_settings_error('scheduleSettings', 'scheduleErrorEndLowerStart', 'Data zakończenia nie może być wcześniej niż data rozpoczęcia!');
-        } else
+        } else if (!isset($input['delete']))
             add_settings_error('scheduleSettings', 'scheduleErrorEmpty', 'Musisz podać datę początku i końca!');
+
+        if(isset($input['delete'])) {
+            $toDelete = array_keys($input['delete']);
+
+            foreach (array_keys($newInput['dateStart']) as $key)  {
+                if (in_array($key, $toDelete)) {
+                    unset($newInput['dateStart'][$key]);
+                    unset($newInput['dateEnd'][$key]);
+                }
+            }
+        }
 
         return $newInput;
     }
 
-    public function checkboxField($args)
+    public function enableField($args)
     {
         $value = $this->getOption($args);
 
         echo '<input type="checkbox" style="display: none" class="tgl tgl-flat" id="'.$args['name'].'" ' . 'name="'.$this->getFullName($args).'" '.($value ? 'checked' : '').'>' . '<label class="tgl-btn"' . ' for="' . $args['name'] .'"></label>';
 
         $this->addDescription($args);
+
+        if (BaseController::$isSchedule)
+            echo 'Włączone poprzez ustawienie czasowe!';
     }
 
     public function textField($args)
@@ -144,5 +158,4 @@ class SettingsCallbacks extends BaseController
         if (isset($args['description']))
             echo '<p class="input-description">'.__($args['description'], $this->pluginName).'</p>';
     }
-
 }

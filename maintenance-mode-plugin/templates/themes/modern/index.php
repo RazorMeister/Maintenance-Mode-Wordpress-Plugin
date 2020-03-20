@@ -171,5 +171,30 @@
 <script src="<?php echo $this->themeUrl ?>assets/js/page-jquery.countdown.min.js"></script>
 <script src="<?php echo $this->themeUrl; ?>assets/js/page-main.js"></script>
 
+<script>
+    <?php
+        if (\MaintenanceModePlugin\Inc\Base\BaseController::$isSchedule) {
+            $date = date('F d, Y H:i:s', \MaintenanceModePlugin\Inc\Base\BaseController::$scheduleEnd);
+        } else {
+            $date = "December 14, 2020 18:03:26";
+        }
+    ?>
+    $('#countdown').countdown({
+        date: "<?php echo $date ?>",
+        render: function(data) {
+            var el = $(this.el);
+            el.empty()
+                //.append("<div>" + this.leadingZeros(data.years, 4) + "<span>years</span></div>")
+                .append("<div>" + this.leadingZeros(data.days, 2) + " <span>days</span></div>")
+                .append("<div>" + this.leadingZeros(data.hours, 2) + " <span>hrs</span></div>")
+                .append("<div>" + this.leadingZeros(data.min, 2) + " <span>min</span></div>")
+                .append("<div>" + this.leadingZeros(data.sec, 2) + " <span>sec</span></div>");
+        },
+        onEnd: function() {
+            window.location.reload(true);
+        }
+    });
+</script>
+
 </body>
 </html>
