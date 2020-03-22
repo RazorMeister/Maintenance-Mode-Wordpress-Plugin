@@ -52,9 +52,11 @@
         </section>
         <section>
             <h2><?php _e('IP Management', $this->pluginName) ?></h2>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem quas adipisci a accusantium eius ut
-            voluptatibus ad impedit nulla, ipsa qui. Quasi temporibus eos commodi aliquid impedit amet, similique nulla.
-            <h3>Twoje IP: <?php echo $this->userIp ?></h3>
+            <?php _e('IP whitelisting is a security feature used for limiting and controlling access only to trusted users. IP whitelisting allows you to create lists of trusted IP addresses or IP ranges from which you can access your website without seeing maintenance page.', $this->pluginName) ?>
+            <br>
+            <br>
+            <?php _e('Please note that most home networks are likely to have a dynamic IP address. A dynamic IP address is an IP address that changes from time to time unlike a static IP address. Instead of one IP address always being allocated to your home network (static IP), your IP address is pulled from a pool of addresses and then assigned to your home network by your ISP. After a few days, weeks or sometimes months that IP address is put back into the pool and you are assigned a new IP address.', $this->pluginName) ?>
+            <h3><?php _e('Your IP address: ', $this->pluginName) ?><?php echo $this->userIp ?></h3>
             <form action="options.php" method="post">
                 <?php
                 settings_fields($this->prefix . 'ipManagement');
