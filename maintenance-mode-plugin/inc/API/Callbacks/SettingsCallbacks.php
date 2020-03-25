@@ -31,21 +31,28 @@ class SettingsCallbacks extends BaseController
         $newInput['dateEnd'] = $oldEnds;
 
         if ($input['dateStart'] && $input['dateEnd']) {
-            $dateStart = explode('T', $input['dateStart']);
-            $dateStart = array_merge(explode('-', $dateStart[0]), explode(':', $dateStart[1]));
-            $timeStart = mktime($dateStart[3], $dateStart[4], 0, $dateStart[1], $dateStart[2], $dateStart[0]);
+            try {
+                new \DateTime($input['dateStart']);
+                new \DateTime($input['dateEnd']);
 
-            $dateEnd = explode('T', $input['dateEnd']);
-            $dateEnd = array_merge(explode('-', $dateEnd[0]), explode(':', $dateEnd[1]));
-            $timeEnd = mktime($dateEnd[3], $dateEnd[4], 0, $dateEnd[1], $dateEnd[2], $dateEnd[0]);
+                $dateStart = explode(' ', $input['dateStart']);
+                $dateStart = array_merge(explode('-', $dateStart[0]), explode(':', $dateStart[1]));
+                $timeStart = mktime($dateStart[3], $dateStart[4], 0, $dateStart[1], $dateStart[0], $dateStart[2]);
 
-            if ($timeEnd > $timeStart) {
-                $newInput['dateStart'][] = $timeStart;
-                $newInput['dateEnd'][] = $timeEnd;
-            } else
-                add_settings_error('scheduleSettings', 'scheduleErrorEndLowerStart', 'Data zakończenia nie może być wcześniej niż data rozpoczęcia!');
+                $dateEnd = explode(' ', $input['dateEnd']);
+                $dateEnd = array_merge(explode('-', $dateEnd[0]), explode(':', $dateEnd[1]));
+                $timeEnd = mktime($dateEnd[3], $dateEnd[4], 0, $dateEnd[1], $dateEnd[0], $dateEnd[2]);
+
+                if ($timeEnd > $timeStart) {
+                    $newInput['dateStart'][] = $timeStart;
+                    $newInput['dateEnd'][] = $timeEnd;
+                } else
+                    add_settings_error('scheduleSettings', 'scheduleErrorEndLowerStart', __('Date of end cannot be earlier than date od start!', $this->pluginName));
+            } catch (\Exception $e) {
+                add_settings_error('scheduleSettings', 'scheduleErrorEndLowerStart', __('Date format is incorrect!', $this->pluginName));
+            }
         } else if (!isset($input['delete']))
-            add_settings_error('scheduleSettings', 'scheduleErrorEmpty', 'Musisz podać datę początku i końca!');
+            add_settings_error('scheduleSettings', 'scheduleErrorEmpty', __('You have to set date start and end!', $this->pluginName));
 
         if(isset($input['delete'])) {
             $toDelete = array_keys($input['delete']);
@@ -65,12 +72,14 @@ class SettingsCallbacks extends BaseController
     {
         $value = $this->getOption($args);
 
-        echo '<input type="checkbox" style="display: none" class="tgl tgl-flat" id="'.$args['name'].'" ' . 'name="'.$this->getFullName($args).'" '.($value ? 'checked' : '').'>' . '<label class="tgl-btn"' . ' for="' . $args['name'] .'"></label>';
-
-        $this->addDescription($args);
+        echo '<div class="enabled-input"><input type="checkbox" style="display: none" class="tgl tgl-flat" id="'.$args['name'].'" ' . 'name="'.$this->getFullName($args).'" '.($value ? 'checked' : '').'>' . '<label class="tgl-btn"' . ' for="' . $args['name'] .'"></label>';
 
         if (BaseController::$isSchedule)
-            echo 'Włączone poprzez ustawienie czasowe!';
+            echo '<p class="enabled-by-schedule">['.__('Enabled by schedule settings', $this->pluginName).']</p>';
+
+        echo '</div>';
+
+        $this->addDescription($args);
     }
 
     public function textField($args)

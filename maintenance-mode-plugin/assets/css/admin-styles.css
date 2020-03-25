@@ -8,6 +8,7 @@
     letter-spacing: 5px;
     padding: 40px 0 40px 0;
     margin: 0;
+    line-height: 1em;
 }
 
 .tabs {
@@ -384,5 +385,17 @@
 .input-description {
     color: #666;
     font-style: italic;
+    margin: 5px;
+}
+
+.enabled-input {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.enabled-by-schedule {
+    font-style: italic;
+    color: green;
     margin: 5px;
 }

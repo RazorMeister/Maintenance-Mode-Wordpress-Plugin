@@ -35,5 +35,6 @@ class Enqueue extends BaseController
         wp_enqueue_script('MaintenanceModePluginAdminJquery', $this->pluginUrl.'assets/js/jquery.min.js');
         wp_enqueue_script('MaintenanceModePluginAdminScripts', $this->pluginUrl.'assets/js/admin-scripts.js');
         wp_enqueue_script('MaintenanceModePluginAdminDate', $this->pluginUrl.'assets/js/date-picker.js');
+        wp_enqueue_script('MaintenanceModePluginAdminDay', $this->pluginUrl.'assets/js/day.min.js');
     }
 }

@@ -69,8 +69,8 @@
         </section>
         <section>
             <h2><?php _e('Schedule', $this->pluginName) ?></h2>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam nemo ducimus eius, magnam error quisquam sunt
-            voluptate labore, excepturi numquam! Alias libero optio sed harum debitis! Veniam, quia in eum.
+            <?php _e('Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam nemo ducimus eius, magnam error quisquam sunt
+            voluptate labore, excepturi numquam! Alias libero optio sed harum debitis! Veniam, quia in eum.', $this->pluginName) ?>
             <h3>Obecna data: <?php echo date('d-m-Y H:i:s', current_time('U')) ?>
             </h3>
             <form action="options.php" method="post">
@@ -152,10 +152,11 @@
 
     picker.on("submit", function(date, readableDate){
         if (dateStartIsOpen) {
-            $(".dateStart").val(readableDate);
+            console.log(date);
+            $(".dateStart").val(dayjs(date).format("DD-MM-YYYY HH:mm"));
             dateStartIsOpen = false;
         } else {
-            $(".dateEnd").val(readableDate);
+            $(".dateEnd").val(dayjs(date).format("DD-MM-YYYY HH:mm"));
             dateEndIsOpen = false;
         }
     });
