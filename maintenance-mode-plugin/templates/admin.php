@@ -56,7 +56,40 @@
             <br>
             <br>
             <?php _e('Please note that most home networks are likely to have a dynamic IP address. A dynamic IP address is an IP address that changes from time to time unlike a static IP address. Instead of one IP address always being allocated to your home network (static IP), your IP address is pulled from a pool of addresses and then assigned to your home network by your ISP. After a few days, weeks or sometimes months that IP address is put back into the pool and you are assigned a new IP address.', $this->pluginName) ?>
-            <h3><?php _e('Your IP address: ', $this->pluginName) ?><?php echo $this->userIp ?></h3>
+
+
+            <div class="current-ip-rules">
+                <div class="tablecontainer">
+                    <table>
+                        <thead>
+                        <tr>
+                            <th><?php _e('Excluded IP addresses', $this->pluginName) ?></th>
+                            <th colspan="3"></th>
+                        </tr>
+                        <tr class="headingTr">
+                            <th><?php _e('Start IP address', $this->pluginName) ?></th>
+                            <th><?php _e('End IP address', $this->pluginName) ?></th>
+                            <th><?php _e('Remove', $this->pluginName) ?></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <?php
+                        if(is_array($this->options['dateStart']))
+                            foreach (array_keys($this->options['dateStart']) as $key)
+                                echo '<tr>
+                                            <td>'.date('d-m-Y H:i', $this->options['dateStart'][$key]).'</td>
+                                            <td>'.date('d-m-Y H:i', $this->options['dateEnd'][$key]).'</td>
+                                            <td><input type="checkbox" name="'.$this->prefix.'schedule[delete]['.$key.']"></td>
+                                        </tr>';
+                        ?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <h3><?php _e('Add new IP address', $this->pluginName) ?></h3>
+            <?php _e('Your IP address: ', $this->pluginName) ?><?php echo $this->userIp ?>
+
             <form action="options.php" method="post">
                 <?php
                 settings_fields($this->prefix . 'ipManagement');
@@ -71,30 +104,41 @@
             <h2><?php _e('Schedule', $this->pluginName) ?></h2>
             <?php _e('Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam nemo ducimus eius, magnam error quisquam sunt
             voluptate labore, excepturi numquam! Alias libero optio sed harum debitis! Veniam, quia in eum.', $this->pluginName) ?>
-            <h3>Obecna data: <?php echo date('d-m-Y H:i:s', current_time('U')) ?>
+
             </h3>
             <form action="options.php" method="post">
                 <?php settings_fields($this->prefix . 'schedule'); ?>
 
                 <div class="current-schedules">
-                    <table class="table" border="1">
-                        <tr>
-                            <td>Data start</td>
-                            <td>Data end</td>
-                            <td>Usuń</td>
-                        </tr>
-                        <?php
-                        if(is_array($this->options['dateStart']))
-                            foreach (array_keys($this->options['dateStart']) as $key)
-                            echo '<tr>
-                                    <td>'.date('d-m-Y H:i', $this->options['dateStart'][$key]).'</td>
-                                    <td>'.date('d-m-Y H:i', $this->options['dateEnd'][$key]).'</td>
-                                    <td><input type="checkbox" name="'.$this->prefix.'schedule[delete]['.$key.']"></td>
-                                </tr>';
-                        ?>
-                    </table>
+                    <div class="tablecontainer">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th><?php _e('Scheduled maintenance', $this->pluginName) ?></th>
+                                    <th colspan="3"></th>
+                                </tr>
+                                <tr class="headingTr">
+                                    <th><?php _e('Start date', $this->pluginName) ?></th>
+                                    <th><?php _e('End date', $this->pluginName) ?></th>
+                                    <th><?php _e('Remove', $this->pluginName) ?></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                if(is_array($this->options['dateStart']))
+                                    foreach (array_keys($this->options['dateStart']) as $key)
+                                    echo '<tr>
+                                            <td>'.date('d-m-Y H:i', $this->options['dateStart'][$key]).'</td>
+                                            <td>'.date('d-m-Y H:i', $this->options['dateEnd'][$key]).'</td>
+                                            <td><input type="checkbox" name="'.$this->prefix.'schedule[delete]['.$key.']"></td>
+                                        </tr>';
+                                ?>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
-
+                <h3><?php _e('Schedule new maintenance time', $this->pluginName) ?></h3>
+               <?php _e('Current time:', $this->pluginName) ?> <?php echo date('d-m-Y H:i:s', current_time('U')) ?>
                 <?php
                     do_settings_sections($this->prefix . 'schedule');
                     submit_button(null, 'primary', 'saveSchedule');
