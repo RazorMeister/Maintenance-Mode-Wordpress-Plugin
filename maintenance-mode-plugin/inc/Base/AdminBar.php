@@ -35,15 +35,15 @@ class AdminBar extends BaseController
         $wp_admin_bar->add_menu([
             'parent' => '',
             'id'     => $this->prefix.'bar',
-            'title'  => 'Maintenance Mode: '.$isEnabledLabel,
+            'title'  => 'Maintenance Mode '.$isEnabledLabel,
             'href'   => admin_url('options-general.php?page='.$this->pageName)
         ]);
-        $wp_admin_bar->add_node( array(
+       /* $wp_admin_bar->add_node( array(
             'parent' => $this->prefix.'bar',
             'id'    => $this->prefix.'state',
             'title' => $action,
             'href'  => false,
-        ));
+        ));*/
         $wp_admin_bar->add_node( array(
             'parent' => $this->prefix.'bar',
             'id'     => $this->prefix.'settings',

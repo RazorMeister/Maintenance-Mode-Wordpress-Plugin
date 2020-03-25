@@ -124,7 +124,8 @@ class SettingsCallbacks extends BaseController
 
     public function scheduleField($args)
     {
-        echo '<input type="datetime-local" class="" min="'.date('Y-m-d').'T'.date('H:i').'" name="'.$this->getFullName($args).'">';
+        //echo '<input type="datetime-local" class="" min="'.date('Y-m-d').'T'.date('H:i').'" name="'.$this->getFullName($args).'">';
+        echo '<input type="text" class="'.$args['name'].'" name="'.$this->getFullName($args).'">';
     }
 
     private function getFullName($args)

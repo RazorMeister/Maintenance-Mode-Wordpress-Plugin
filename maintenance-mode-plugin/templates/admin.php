@@ -2,7 +2,7 @@
 <h1 class="plugintitle-h1">Maintenance Mode Plugin</h1>
 <div class="tabs">
 
-    <input type="radio" id="tab1" name="tab-control" class="tab-control" <?php if(isset($_COOKIE['MMP_currentTabId']) && $_COOKIE['MMP_currentTabId'] == 'tab1') echo 'checked'; ?>>
+    <input type="radio" id="tab1" name="tab-control" class="tab-control" <?php if((isset($_COOKIE['MMP_currentTabId']) && $_COOKIE['MMP_currentTabId'] == 'tab1') || !isset($_COOKIE['MMP_currentTabId'])) echo 'checked'; ?>>
     <input type="radio" id="tab2" name="tab-control" class="tab-control" <?php if(isset($_COOKIE['MMP_currentTabId']) && $_COOKIE['MMP_currentTabId'] == 'tab2') echo 'checked'; ?>>
     <input type="radio" id="tab3" name="tab-control" class="tab-control" <?php if(isset($_COOKIE['MMP_currentTabId']) && $_COOKIE['MMP_currentTabId'] == 'tab3') echo 'checked'; ?>>
     <input type="radio" id="tab4" name="tab-control" class="tab-control" <?php if(isset($_COOKIE['MMP_currentTabId']) && $_COOKIE['MMP_currentTabId'] == 'tab4') echo 'checked'; ?>>
@@ -116,3 +116,47 @@
         </section>
     </div>
 </div>
+
+<script>
+    let  dateStartIsOpen = false;
+    let  dateEndIsOpen = false;
+    let picker = new SimplePicker({
+        zIndex: 10
+    });
+
+    $(".dateStart").click(function() {
+        if (dateStartIsOpen) {
+            picker.close();
+            dateStartIsOpen = false;
+        } else {
+            picker.open();
+            dateStartIsOpen = true;
+        }
+    });
+
+    $(".dateEnd").click(function() {
+        if (dateEndIsOpen) {
+            picker.close();
+            dateEndIsOpen = false;
+        } else {
+            picker.open();
+            dateEndIsOpen = true;
+        }
+    });
+
+    picker.on('close', function(date){
+        dateStartIsOpen = false;
+        dateEndIsOpen = false;
+    });
+
+
+    picker.on("submit", function(date, readableDate){
+        if (dateStartIsOpen) {
+            $(".dateStart").val(readableDate);
+            dateStartIsOpen = false;
+        } else {
+            $(".dateEnd").val(readableDate);
+            dateEndIsOpen = false;
+        }
+    });
+</script>

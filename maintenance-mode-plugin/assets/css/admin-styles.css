@@ -379,3 +379,10 @@
 .single-theme input {
     display: none;
 }
+
+/* Input description */
+.input-description {
+    color: #666;
+    font-style: italic;
+    margin: 5px;
+}
