@@ -52,10 +52,8 @@
         </section>
         <section>
             <h2><?php _e('IP Management', $this->pluginName) ?></h2>
-            <?php _e('IP whitelisting is a security feature used for limiting and controlling access only to trusted users. IP whitelisting allows you to create lists of trusted IP addresses or IP ranges from which you can access your website without seeing maintenance page.', $this->pluginName) ?>
-            <br>
-            <br>
-            <?php _e('Please note that most home networks are likely to have a dynamic IP address. A dynamic IP address is an IP address that changes from time to time unlike a static IP address. Instead of one IP address always being allocated to your home network (static IP), your IP address is pulled from a pool of addresses and then assigned to your home network by your ISP. After a few days, weeks or sometimes months that IP address is put back into the pool and you are assigned a new IP address.', $this->pluginName) ?>
+            <div class="info-box"><?php _e('IP whitelisting is a security feature used for limiting and controlling access only to trusted users. IP whitelisting allows you to create lists of trusted IP addresses or IP ranges from which you can access your website without seeing maintenance page.', $this->pluginName) ?></div>
+            <div class="info-box"><?php _e('Please note that most home networks are likely to have a dynamic IP address. A dynamic IP address is an IP address that changes from time to time unlike a static IP address. Instead of one IP address always being allocated to your home network (static IP), your IP address is pulled from a pool of addresses and then assigned to your home network by your ISP. After a few days, weeks or sometimes months that IP address is put back into the pool and you are assigned a new IP address.', $this->pluginName) ?></div>
 
             <form action="options.php" method="post">
                 <div class="current-ip-rules">
@@ -108,8 +106,8 @@
         </section>
         <section>
             <h2><?php _e('Schedule', $this->pluginName) ?></h2>
-            <?php _e('Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam nemo ducimus eius, magnam error quisquam sunt
-            voluptate labore, excepturi numquam! Alias libero optio sed harum debitis! Veniam, quia in eum.', $this->pluginName) ?>
+            <div class="info-box"><?php _e('Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam nemo ducimus eius, magnam error quisquam sunt
+            voluptate labore, excepturi numquam! Alias libero optio sed harum debitis! Veniam, quia in eum.', $this->pluginName) ?></div>
 
             </h3>
             <form action="options.php" method="post">
@@ -155,16 +153,16 @@
         </section>
         <section>
             <h2><?php _e('About plugin', $this->pluginName) ?></h2>
-            <?php _e('Maintenance Mode Plugin is a small plugin that replaces your website with a splash page which explains why it\'s offline and when you can expect it to be live again. It is possible to operate it manually or using schedule and IP whitelisting.', $this->pluginName) ?>
+            <div class="info-box"><?php _e('Maintenance Mode Plugin is a small plugin that replaces your website with a splash page which explains why it\'s offline and when you can expect it to be live again. It is possible to operate it manually or using schedule and IP whitelisting.', $this->pluginName) ?></div>
 
             <h3><?php _e('Authors', $this->pluginName) ?></h3>
-            <?php _e('Tymoteusz \'RazorMeister\' Bartnik & Przemysław \'lavar3l\' Dominikowski', $this->pluginName) ?>
+            <span><?php _e('Tymoteusz \'RazorMeister\' Bartnik & Przemysław \'lavar3l\' Dominikowski', $this->pluginName) ?></span>
 
             <h3><?php _e('Repository', $this->pluginName) ?></h3>
-            <?php _e('Feel free to visit our', $this->pluginName) ?> <a href="https://github.com/RazorMeister/Maintenance-Mode-Wordpress-Plugin" target="_blank"><?php _e('GitHub repository!', $this->pluginName) ?></a>
+            <span><?php _e('Feel free to visit our', $this->pluginName) ?> <a href="https://github.com/RazorMeister/Maintenance-Mode-Wordpress-Plugin" target="_blank"><?php _e('GitHub repository!', $this->pluginName) ?></a></span>
 
             <h3><?php _e('License', $this->pluginName) ?></h3>
-            <?php _e('This work is licensed under the European Union Public License v. 1.2. For further details visit our', $this->pluginName) ?> <a href="https://github.com/RazorMeister/Maintenance-Mode-Wordpress-Plugin/blob/master/LICENSE.md" target="_blank"><?php _e('GitHub repo', $this->pluginName) ?></a>.
+            <span><?php _e('This work is licensed under the European Union Public License v. 1.2. For further details visit our', $this->pluginName) ?> <a href="https://github.com/RazorMeister/Maintenance-Mode-Wordpress-Plugin/blob/master/LICENSE.md" target="_blank"><?php _e('GitHub repo', $this->pluginName) ?></a>.</span>
         </section>
     </div>
 </div>

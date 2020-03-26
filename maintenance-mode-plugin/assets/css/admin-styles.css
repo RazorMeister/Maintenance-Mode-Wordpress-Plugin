@@ -445,3 +445,14 @@
     background-color: rgba(255,255,255,0.2);
     z-index: -1;
 }
+
+/* Info box */
+.info-box {
+    margin: 10px 0;
+    background-color: #c9efff;
+    border-left: solid 5px #0564fb;
+    overflow: hidden;
+    padding: 10px;
+    border-radius: 2px 5px 5px 2px;
+    box-shadow: 0 3px 7px rgba(0, 0, 0, 0.06), 0 3px 3px rgba(0, 0, 0, 0.05);
+}
