@@ -449,7 +449,7 @@
 /* Info box */
 .info-box {
     margin: 10px 0;
-    background-color: #c9efff;
+    background: rgba(201,239,255,0.15);
     border-left: solid 5px #0564fb;
     overflow: hidden;
     padding: 10px;
