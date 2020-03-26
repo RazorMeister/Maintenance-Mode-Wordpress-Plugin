@@ -13,7 +13,33 @@ class SettingsCallbacks extends BaseController
 
     public function ipManagementSettings($input)
     {
-        return $input;
+        $newInput = [];
+        $old = $this->options['ipWhitelist'];
+
+        if (!is_array($old))
+            $old = [];
+
+        $newInput['ipWhitelist'] = $old;
+
+        if ($input['ipWhitelist']) {
+            $range = \IPLib\Factory::rangeFromString($input['ipWhitelist']);
+            if ($range) {
+                $newInput['ipWhitelist'][] = $input['ipWhitelist'];
+            } else
+                add_settings_error('ipWhitelistSettings', 'ipWhitelistIncorrect', __('Specified ip address is incorrect!', $this->pluginName));
+        } else if (!isset($input['delete']))
+            add_settings_error('ipWhitelistSettings', 'ipWhitelistErrorEmpty', __('You have to set ip!', $this->pluginName));
+
+
+        if(isset($input['delete'])) {
+            $toDelete = array_keys($input['delete']);
+
+            foreach (array_keys($newInput['ipWhitelist']) as $key)
+                if (in_array($key, $toDelete))
+                    unset($newInput['ipWhitelist'][$key]);
+        }
+
+        return $newInput;
     }
 
     public function scheduleSettings($input)
@@ -49,7 +75,7 @@ class SettingsCallbacks extends BaseController
                 } else
                     add_settings_error('scheduleSettings', 'scheduleErrorEndLowerStart', __('Date of end cannot be earlier than date od start!', $this->pluginName));
             } catch (\Exception $e) {
-                add_settings_error('scheduleSettings', 'scheduleErrorEndLowerStart', __('Date format is incorrect!', $this->pluginName));
+                add_settings_error('scheduleSettings', 'scheduleErrorIncorrect', __('Date format is incorrect!', $this->pluginName));
             }
         } else if (!isset($input['delete']))
             add_settings_error('scheduleSettings', 'scheduleErrorEmpty', __('You have to set date start and end!', $this->pluginName));
@@ -129,6 +155,13 @@ class SettingsCallbacks extends BaseController
         }
 
         echo '</div>';
+    }
+
+    public function ipField($args)
+    {
+        echo '<input type="text" class="" name="'.$this->getFullName($args).'" placeholder="'.$args['placeholder'].'">';
+
+        $this->addDescription($args);
     }
 
     public function scheduleField($args)

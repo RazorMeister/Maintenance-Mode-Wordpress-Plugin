@@ -74,13 +74,19 @@
                         </thead>
                         <tbody>
                         <?php
-                        if(is_array($this->options['dateStart']))
-                            foreach (array_keys($this->options['dateStart']) as $key)
+                        if(is_array($this->options['ipWhitelist']) && count($this->options['ipWhitelist']) > 0)
+                            foreach (array_keys($this->options['ipWhitelist']) as $key) {
+                                $range = \IPLib\Factory::rangeFromString($this->options['ipWhitelist'][$key]);
+                                $start = (string) $range->getStartAddress();
+                                $end = (string) $range->getEndAddress();
                                 echo '<tr>
-                                            <td>'.date('d-m-Y H:i', $this->options['dateStart'][$key]).'</td>
-                                            <td>'.date('d-m-Y H:i', $this->options['dateEnd'][$key]).'</td>
-                                            <td><input type="checkbox" name="'.$this->prefix.'schedule[delete]['.$key.']"></td>
-                                        </tr>';
+                                    <td>'.$start.'</td>
+                                    <td>'.($start != $end ? $end : '---').'</td>
+                                    <td><input type="checkbox" name="'.$this->prefix.'ipWhitelist[delete]['.$key.']"></td>
+                                </tr>';
+                            }
+                        else
+                             echo '<tr><td>---</td><td>---</td><td>---</td></tr>';
                         ?>
                         </tbody>
                     </table>
@@ -125,13 +131,15 @@
                             </thead>
                             <tbody>
                                 <?php
-                                if(is_array($this->options['dateStart']))
+                                if(is_array($this->options['dateStart']) && count($this->options['dateStart']) > 0) {
                                     foreach (array_keys($this->options['dateStart']) as $key)
-                                    echo '<tr>
+                                        echo '<tr>
                                             <td>'.date('d-m-Y H:i', $this->options['dateStart'][$key]).'</td>
                                             <td>'.date('d-m-Y H:i', $this->options['dateEnd'][$key]).'</td>
                                             <td><input type="checkbox" name="'.$this->prefix.'schedule[delete]['.$key.']"></td>
                                         </tr>';
+                                } else
+                                     echo '<tr><td>---</td><td>---</td><td>---</td></tr>';
                                 ?>
                             </tbody>
                         </table>

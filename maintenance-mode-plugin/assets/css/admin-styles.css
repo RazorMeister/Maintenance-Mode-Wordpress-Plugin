@@ -406,6 +406,7 @@
     margin: 0;
     background: linear-gradient(45deg,#49a09d,#5f2c82);
     font-weight: 100;
+    margin: 20px 0;
 }
 
 .tablecontainer table {
