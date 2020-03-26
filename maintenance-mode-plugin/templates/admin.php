@@ -57,46 +57,46 @@
             <br>
             <?php _e('Please note that most home networks are likely to have a dynamic IP address. A dynamic IP address is an IP address that changes from time to time unlike a static IP address. Instead of one IP address always being allocated to your home network (static IP), your IP address is pulled from a pool of addresses and then assigned to your home network by your ISP. After a few days, weeks or sometimes months that IP address is put back into the pool and you are assigned a new IP address.', $this->pluginName) ?>
 
-
-            <div class="current-ip-rules">
-                <div class="tablecontainer">
-                    <table>
-                        <thead>
-                        <tr>
-                            <th><?php _e('Excluded IP addresses', $this->pluginName) ?></th>
-                            <th colspan="3"></th>
-                        </tr>
-                        <tr class="headingTr">
-                            <th><?php _e('Start IP address', $this->pluginName) ?></th>
-                            <th><?php _e('End IP address', $this->pluginName) ?></th>
-                            <th><?php _e('Remove', $this->pluginName) ?></th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <?php
-                        if(is_array($this->options['ipWhitelist']) && count($this->options['ipWhitelist']) > 0)
-                            foreach (array_keys($this->options['ipWhitelist']) as $key) {
-                                $range = \IPLib\Factory::rangeFromString($this->options['ipWhitelist'][$key]);
-                                $start = (string) $range->getStartAddress();
-                                $end = (string) $range->getEndAddress();
-                                echo '<tr>
-                                    <td>'.$start.'</td>
-                                    <td>'.($start != $end ? $end : '---').'</td>
-                                    <td><input type="checkbox" name="'.$this->prefix.'ipWhitelist[delete]['.$key.']"></td>
-                                </tr>';
-                            }
-                        else
-                             echo '<tr><td>---</td><td>---</td><td>---</td></tr>';
-                        ?>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-            <h3><?php _e('Add new IP address', $this->pluginName) ?></h3>
-            <?php _e('Your IP address: ', $this->pluginName) ?><?php echo $this->userIp ?>
-
             <form action="options.php" method="post">
+                <div class="current-ip-rules">
+                    <div class="tablecontainer">
+                        <table>
+                            <thead>
+                            <tr>
+                                <th><?php _e('Excluded IP addresses', $this->pluginName) ?></th>
+                                <th colspan="3"></th>
+                            </tr>
+                            <tr class="headingTr">
+                                <th><?php _e('Start IP address', $this->pluginName) ?></th>
+                                <th><?php _e('End IP address', $this->pluginName) ?></th>
+                                <th><?php _e('Remove', $this->pluginName) ?></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <?php
+                            if(is_array($this->options['ipWhitelist']) && count($this->options['ipWhitelist']) > 0) {
+                                $clientAddress = \IPLib\Factory::addressFromString($this->userIp);
+                                foreach (array_keys($this->options['ipWhitelist']) as $key) {
+                                    $range = \IPLib\Factory::rangeFromString($this->options['ipWhitelist'][$key]);
+                                    $start = (string) $range->getStartAddress();
+                                    $end = (string) $range->getEndAddress();
+                                    echo '<tr>
+                                        <td>'.$start.($clientAddress->matches($range) ? ' ('.__('Includes your IP address', $this->pluginName).')' : '').'</td>
+                                        <td>'.($start != $end ? $end : '---').'</td>
+                                        <td><input type="checkbox" name="'.$this->prefix.'ipManagement[delete]['.$key.']"></td>
+                                    </tr>';
+                                }
+                            } else
+                                 echo '<tr><td>---</td><td>---</td><td>---</td></tr>';
+                            ?>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <h3><?php _e('Add new IP address', $this->pluginName) ?></h3>
+                <?php _e('Your IP address: ', $this->pluginName) ?><?php echo $this->userIp ?>
+
                 <?php
                 settings_fields($this->prefix . 'ipManagement');
                 do_settings_sections($this->prefix . 'ipManagement');
