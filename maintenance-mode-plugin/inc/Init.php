@@ -19,6 +19,7 @@ class Init
             Base\Enqueue::class,
             Base\AdminBar::class,
             Base\CheckSchedule::class,
+            Base\InitLibs::class,
 
             Pages\Admin::class,
             Pages\Maintenance::class,

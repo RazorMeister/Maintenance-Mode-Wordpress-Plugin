@@ -82,11 +82,15 @@ class Maintenance extends BaseController
      */
     private function isAllowedIp()
     {
-        $whitelistedIps = explode(',', $this->options['ipWhitelist']);
-        if (!is_array($whitelistedIps))
-            $whitelistedIps = [];
+        $clientAddress = \IPLib\Factory::addressFromString($this->userIp);
 
-        return in_array($this->userIp, $whitelistedIps);
+        foreach ($this->options['ipWhitelist'] as $ipRange) {
+            $range = \IPLib\Factory::rangeFromString($ipRange);
+            if ($clientAddress->matches($range))
+                return true;
+        }
+
+        return false;
     }
 
     /**

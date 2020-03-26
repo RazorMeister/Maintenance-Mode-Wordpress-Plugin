@@ -133,13 +133,13 @@ class Admin extends BaseController
             // Ip management Settings
             [
                 'id' => 'ipWhitelist',
-                'title' => __('Excluded Ip addresses (separated by comma)', $this->pluginName),
-                'callback' => [$this->settingsCallbacks, 'textField'],
+                'title' => __('Excluded Ip address', $this->pluginName),
+                'callback' => [$this->settingsCallbacks, 'ipField'],
                 'page' => $this->prefix . 'ipManagement',
                 'section' => $this->prefix . 'ipManagementSection',
                 'args' => [
                     'name' => 'ipWhitelist',
-                    'placeholder' => '127.0.0.0, 127.0.0.1',
+                    'placeholder' => '127.0.0.0 | 127.0.0.* | 10.0.0.0/8',
                     'settings' => $this->prefix.'ipManagement',
                     'description' => __('Opisik', $this->pluginName)
                 ]
