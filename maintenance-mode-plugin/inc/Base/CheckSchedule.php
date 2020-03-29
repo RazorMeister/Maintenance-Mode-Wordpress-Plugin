@@ -4,11 +4,17 @@ namespace MaintenanceModePlugin\Inc\Base;
 
 class CheckSchedule extends BaseController
 {
+    /**
+     * Run check method.
+     */
     public function register()
     {
         $this->check();
     }
 
+    /**
+     * Check if maintenance page should be shown due to schedule.
+     */
     public function check()
     {
         if (is_array($this->options['dateStart'])) {
@@ -29,6 +35,11 @@ class CheckSchedule extends BaseController
         }
     }
 
+    /**
+     * Change maintenance mode plugin status to enabled \ disabled.
+     *
+     * @param bool $turnOn
+     */
     private function changeMaintenanceModeStatus($turnOn = true)
     {
         $options = get_option($this->prefix.'general');

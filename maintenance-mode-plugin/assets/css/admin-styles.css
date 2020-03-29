@@ -456,3 +456,26 @@
     border-radius: 2px 5px 5px 2px;
     box-shadow: 0 3px 7px rgba(0, 0, 0, 0.06), 0 3px 3px rgba(0, 0, 0, 0.05);
 }
+
+/* Button preview */
+.button-preview {
+    position: fixed;
+    bottom: 3%;
+    right: 3%;
+    font-size: 15px!important;
+    padding: 8px!important;
+    background: #428bff!important;
+    border-color: #428bff!important;
+    border-radius: 2px!important;
+    transition: all .2s ease-in-out;
+    z-index: 99999;
+}
+
+.button-preview:hover {
+    background: #2069dd!important;
+    border-color: #428bff!important;
+}
+
+.button-preview:active {
+    border-color: #428bff!important;
+}

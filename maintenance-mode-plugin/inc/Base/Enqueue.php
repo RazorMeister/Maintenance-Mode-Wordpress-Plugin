@@ -28,10 +28,11 @@ class Enqueue extends BaseController
      */
     public function enqueueAdmin()
     {
+        /* Css styles */
         wp_enqueue_style('MaintenanceModePluginAdminStyles', $this->pluginUrl.'assets/css/admin-styles.css');
         wp_enqueue_style('MaintenanceModePluginAdminDateStyle', $this->pluginUrl.'assets/css/date-picker.css');
 
-
+        /* JavaScript scripts */
         wp_enqueue_script('MaintenanceModePluginAdminJquery', $this->pluginUrl.'assets/js/jquery.min.js');
         wp_enqueue_script('MaintenanceModePluginAdminScripts', $this->pluginUrl.'assets/js/admin-scripts.js');
         wp_enqueue_script('MaintenanceModePluginAdminDate', $this->pluginUrl.'assets/js/date-picker.js');

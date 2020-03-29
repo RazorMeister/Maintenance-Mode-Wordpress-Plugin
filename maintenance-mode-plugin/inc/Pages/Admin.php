@@ -11,6 +11,9 @@ class Admin extends BaseController
     private $settings;
     private $settingsCallbacks;
 
+    /**
+     * Set setting and add menu.
+     */
     public function register()
     {
         if (!$this->isAdmin)
@@ -28,16 +31,25 @@ class Admin extends BaseController
         $this->settings->register();
     }
 
+    /**
+     * Add admin page.
+     */
     public function addAdminPage()
     {
         add_options_page(__('Maintenance mode plugin settings', $this->pluginName), 'Maintenance Mode Plugin', 'manage_options', $this->pageName, [$this, 'showAdminPage']);
     }
 
+    /**
+     * Render admin page view.
+     */
     public function showAdminPage()
     {
         require_once $this->pluginPath.'/templates/admin.php';
     }
 
+    /**
+     * Set settings.
+     */
     public function setSettings()
     {
         $args = [];
@@ -52,22 +64,22 @@ class Admin extends BaseController
         $this->settings->setSettings($args);
     }
 
+    /**
+     * Set settings sections.
+     */
     public function setSections()
     {
         $args = [
             [
                 'id' => $this->prefix . 'generalSection',
-                'title' => 'General settings',
                 'page' => $this->prefix . 'general'
             ],
             [
                 'id' => $this->prefix . 'ipManagementSection',
-                'title' => 'Ip management',
                 'page' => $this->prefix . 'ipManagement'
             ],
             [
                 'id' => $this->prefix . 'scheduleSection',
-                'title' => 'Schedule',
                 'page' => $this->prefix . 'schedule'
             ]
         ];
@@ -75,6 +87,9 @@ class Admin extends BaseController
         $this->settings->setSections($args);
     }
 
+    /**
+     * Set settings fields.
+     */
     public function setFields()
     {
         $args = [
@@ -88,7 +103,7 @@ class Admin extends BaseController
                 'args' => [
                     'name' => 'enabled',
                     'settings' => $this->prefix.'general',
-                    'description' => __('Opisik', $this->pluginName)
+                    'description' => __('Enable \ Disable', $this->pluginName)
                 ]
             ],
             [
@@ -100,7 +115,6 @@ class Admin extends BaseController
                 'args' => [
                     'name' => 'theme',
                     'settings' => $this->prefix.'general',
-                    'description' => __('Opisik', $this->pluginName)
                 ]
             ],
             [
@@ -113,7 +127,7 @@ class Admin extends BaseController
                     'name' => 'title',
                     'placeholder' => 'My very good website', $this->pluginName,
                     'settings' => $this->prefix.'general',
-                    'description' => __('Opisik', $this->pluginName)
+                    'description' => __('Title of your site', $this->pluginName)
                 ]
             ],
             [
@@ -126,7 +140,7 @@ class Admin extends BaseController
                     'name' => 'description',
                     'placeholder' => 'This is my website description',
                     'settings' => $this->prefix.'general',
-                    'description' => __('Opisik', $this->pluginName)
+                    'description' => __('Your site description', $this->pluginName)
                 ]
             ],
 
@@ -139,9 +153,9 @@ class Admin extends BaseController
                 'section' => $this->prefix . 'ipManagementSection',
                 'args' => [
                     'name' => 'ipWhitelist',
-                    'placeholder' => '127.0.0.0 | 127.0.0.* | 10.0.0.0/8',
+                    'placeholder' => '127.0.0.*',
                     'settings' => $this->prefix.'ipManagement',
-                    'description' => __('Opisik', $this->pluginName)
+                    'description' => __('You can use: 127.0.0.0 | 127.0.0.* | 10.0.0.0/8', $this->pluginName)
                 ]
             ],
 
@@ -155,7 +169,6 @@ class Admin extends BaseController
                 'args' => [
                     'name' => 'dateStart',
                     'settings' => $this->prefix.'schedule',
-                    'description' => __('Opisik', $this->pluginName)
                 ]
             ],
             [
@@ -167,7 +180,6 @@ class Admin extends BaseController
                 'args' => [
                     'name' => 'dateEnd',
                     'settings' => $this->prefix.'schedule',
-                    'description' => __('Opisik', $this->pluginName)
                 ]
             ],
         ];

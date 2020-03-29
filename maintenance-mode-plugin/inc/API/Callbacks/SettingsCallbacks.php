@@ -6,11 +6,26 @@ use MaintenanceModePlugin\Inc\Base\BaseController;
 
 class SettingsCallbacks extends BaseController
 {
+    /**
+     * General settings callback.
+     *
+     * @param $input
+     *
+     * @return mixed
+     */
     public function generalSettings($input)
     {
         return $input;
     }
 
+    /**
+     * IP management settings callback.
+     * Validate IP and add / delete from ip's array.
+     *
+     * @param $input
+     *
+     * @return array
+     */
     public function ipManagementSettings($input)
     {
         $newInput = [];
@@ -42,6 +57,14 @@ class SettingsCallbacks extends BaseController
         return $newInput;
     }
 
+    /**
+     * Schedule settings callback.
+     * Validate dates and add / delete from dates' array.
+     *
+     * @param $input
+     *
+     * @return array
+     */
     public function scheduleSettings($input)
     {
         $newInput = [];
@@ -94,6 +117,11 @@ class SettingsCallbacks extends BaseController
         return $newInput;
     }
 
+    /**
+     * Render enabled field.
+     *
+     * @param $args
+     */
     public function enableField($args)
     {
         $value = $this->getOption($args);
@@ -108,6 +136,11 @@ class SettingsCallbacks extends BaseController
         $this->addDescription($args);
     }
 
+    /**
+     * Render text field.
+     *
+     * @param $args
+     */
     public function textField($args)
     {
         $value = $this->getOption($args);
@@ -117,6 +150,11 @@ class SettingsCallbacks extends BaseController
         $this->addDescription($args);
     }
 
+    /**
+     * Render textarea field.
+     *
+     * @param $args
+     */
     public function textarea($args)
     {
         $value = $this->getOption($args);
@@ -126,6 +164,11 @@ class SettingsCallbacks extends BaseController
         $this->addDescription($args);
     }
 
+    /**
+     * Render wp WYSIWYG field.
+     *
+     * @param $args
+     */
     public function wpEditor($args)
     {
         $this->addDescription($args);
@@ -135,6 +178,11 @@ class SettingsCallbacks extends BaseController
         wp_editor($value, $editorId, ['textarea_name' => $this->getFullName($args)]);
     }
 
+    /**
+     * Render select theme field.
+     *
+     * @param $args
+     */
     public function selectTheme($args)
     {
         $value = $this->getOption($args);
@@ -157,6 +205,11 @@ class SettingsCallbacks extends BaseController
         echo '</div>';
     }
 
+    /**
+     * Render IP field.
+     *
+     * @param $args
+     */
     public function ipField($args)
     {
         echo '<input type="text" class="" name="'.$this->getFullName($args).'" placeholder="'.$args['placeholder'].'">';
@@ -164,17 +217,36 @@ class SettingsCallbacks extends BaseController
         $this->addDescription($args);
     }
 
+    /**
+     * Render schedule field.
+     *
+     * @param $args
+     */
     public function scheduleField($args)
     {
-        //echo '<input type="datetime-local" class="" min="'.date('Y-m-d').'T'.date('H:i').'" name="'.$this->getFullName($args).'">';
         echo '<input type="text" class="'.$args['name'].'" name="'.$this->getFullName($args).'">';
     }
 
+    /**
+     * Get full name of settings option.
+     *
+     * @param $args
+     *
+     * @return string
+     */
     private function getFullName($args)
     {
         return $args['settings'].'['.$args['name'].']';
     }
 
+    /**
+     * Get option value.
+     *
+     * @param $args
+     * @param bool $escAttr
+     *
+     * @return string
+     */
     private function getOption($args, $escAttr = true)
     {
         $value = get_option($args['settings']);
@@ -182,6 +254,11 @@ class SettingsCallbacks extends BaseController
         return $escAttr ? esc_attr($value) : $value;
     }
 
+    /**
+     * Get all themes from templates/themes dir.
+     *
+     * @return array
+     */
     private function getThemes()
     {
         $dir = [];
@@ -196,6 +273,11 @@ class SettingsCallbacks extends BaseController
         return $dir;
     }
 
+    /**
+     * Render description for field.
+     *
+     * @param $args
+     */
     private function addDescription($args)
     {
         if (isset($args['description']))

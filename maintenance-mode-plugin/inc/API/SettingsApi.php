@@ -10,12 +10,22 @@ class SettingsApi extends BaseController
     private $sections = [];
     private $fields = [];
 
+    /**
+     * Add action to admin_init hook.
+     */
     public function register()
     {
         if (!empty($this->settings))
             add_action('admin_init', [$this, 'registerCustomFields']);
     }
 
+    /**
+     * Settings setter.
+     *
+     * @param array $settings
+     *
+     * @return $this
+     */
     public function setSettings(array $settings)
     {
         $this->settings = $settings;
@@ -23,6 +33,13 @@ class SettingsApi extends BaseController
         return $this;
     }
 
+    /**
+     * Settings sections setter.
+     *
+     * @param array $sections
+     *
+     * @return $this
+     */
     public function setSections(array $sections)
     {
         $this->sections = $sections;
@@ -30,6 +47,13 @@ class SettingsApi extends BaseController
         return $this;
     }
 
+    /**
+     * Settings fields setter.
+     *
+     * @param array $fields
+     *
+     * @return $this
+     */
     public function setFields(array $fields)
     {
         $this->fields = $fields;
@@ -37,6 +61,9 @@ class SettingsApi extends BaseController
         return $this;
     }
 
+    /**
+     * Register all settings, settings sections and settings fields to wp.
+     */
     public function registerCustomFields()
     {
         // Register settings
@@ -53,6 +80,5 @@ class SettingsApi extends BaseController
                 $field['args']['placeholder'] = __($field['args']['placeholder'], $this->pluginName);
             add_settings_field($field['id'], __($field['title'], $this->pluginName),  (isset($field['callback']) ? $field['callback'] : ''), $field['page'], $field['section'], (isset($field['args']) ? $field['args'] : ''));
         }
-
     }
 }

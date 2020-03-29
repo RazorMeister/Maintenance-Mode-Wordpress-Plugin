@@ -46,8 +46,15 @@ class AdminBar extends BaseController
         ));*/
         $wp_admin_bar->add_node( array(
             'parent' => $this->prefix.'bar',
+            'id'     => $this->prefix.'preview',
+            'title'  => __('Preview', $this->pluginName),
+            'href'   => site_url('index.php?maintenanceModePreview=true'),
+            'meta'   => ['target' => '_blank']
+        ));
+        $wp_admin_bar->add_node( array(
+            'parent' => $this->prefix.'bar',
             'id'     => $this->prefix.'settings',
-            'title'  => 'Settings',
+            'title'  => __('Settings', $this->pluginName),
             'href'   => admin_url('options-general.php?page='.$this->pageName)
         ));
     }
