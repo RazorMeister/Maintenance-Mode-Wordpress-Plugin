@@ -106,9 +106,9 @@
         </section>
         <section>
             <h2><?php _e('Schedule', $this->pluginName) ?></h2>
-            <div class="info-box"><?php _e('Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam nemo ducimus eius, magnam error quisquam sunt
-            voluptate labore, excepturi numquam! Alias libero optio sed harum debitis! Veniam, quia in eum.', $this->pluginName) ?></div>
-
+            <div class="info-box"><?php _e('Maintenance scheduling is a feature used to plan the time when your website will have ongoing intended maintenance (such as installing updates, hotfixes or provisioning major changes). Maintenance mode plugin will activate itself automatically when the time comes.', $this->pluginName) ?></div>
+            <div class="info-box"><?php _e('You can specify multiple date and time ranges.', $this->pluginName) ?></div>
+            <div class="info-box"><?php _e('If you choose “Modern Theme” the countdown on maintenance page will automagically count to the first end date.', $this->pluginName) ?></div>
             </h3>
             <form action="options.php" method="post">
                 <?php settings_fields($this->prefix . 'schedule'); ?>
