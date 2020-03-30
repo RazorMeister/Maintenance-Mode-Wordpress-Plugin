@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "Project-Id-Version: Maintenance Mode Plugin\n"
-"POT-Creation-Date: 2020-03-25 13:15+0100\n"
-"PO-Revision-Date: 2020-03-25 13:15+0100\n"
+"POT-Creation-Date: 2020-03-29 12:22+0200\n"
+"PO-Revision-Date: 2020-03-29 12:22+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -21,65 +21,107 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.js\n"
 
+#: inc/API/Callbacks/SettingsCallbacks.php:44
+msgid "Specified ip address is incorrect!"
+msgstr ""
+
+#: inc/API/Callbacks/SettingsCallbacks.php:46
+msgid "You have to set ip!"
+msgstr ""
+
+#: inc/API/Callbacks/SettingsCallbacks.php:99
+msgid "Date of end cannot be earlier than date od start!"
+msgstr ""
+
+#: inc/API/Callbacks/SettingsCallbacks.php:101
+msgid "Date format is incorrect!"
+msgstr ""
+
+#: inc/API/Callbacks/SettingsCallbacks.php:104
+msgid "You have to set date start and end!"
+msgstr ""
+
+#: inc/API/Callbacks/SettingsCallbacks.php:132
+msgid "Enabled by schedule settings"
+msgstr ""
+
+#: inc/Base/AdminBar.php:50 templates/admin.php:3
+msgid "Preview"
+msgstr ""
+
+#: inc/Base/AdminBar.php:57
+msgid "Settings"
+msgstr ""
+
 #: inc/Extra/Theme.php:38
 msgid "Error while loading theme: "
 msgstr ""
 
-#: inc/Pages/Admin.php:33
+#: inc/Pages/Admin.php:39
 msgid "Maintenance mode plugin settings"
 msgstr ""
 
-#: inc/Pages/Admin.php:84
+#: inc/Pages/Admin.php:99
 msgid "Maintenance mode enabled"
 msgstr ""
 
-#: inc/Pages/Admin.php:91 inc/Pages/Admin.php:103 inc/Pages/Admin.php:116
-#: inc/Pages/Admin.php:129 inc/Pages/Admin.php:144 inc/Pages/Admin.php:158
-#: inc/Pages/Admin.php:170
-msgid "Opisik"
+#: inc/Pages/Admin.php:106
+msgid "Enable \\ Disable"
 msgstr ""
 
-#: inc/Pages/Admin.php:96
+#: inc/Pages/Admin.php:111
 msgid "Select theme"
 msgstr ""
 
-#: inc/Pages/Admin.php:108
+#: inc/Pages/Admin.php:122
 msgid "Site title"
 msgstr ""
 
-#: inc/Pages/Admin.php:121
+#: inc/Pages/Admin.php:130
+msgid "Title of your site"
+msgstr ""
+
+#: inc/Pages/Admin.php:135
 msgid "Site description"
 msgstr ""
 
-#: inc/Pages/Admin.php:136
-msgid "Excluded Ip addresses (separated by comma)"
+#: inc/Pages/Admin.php:143
+msgid "Your site description"
 msgstr ""
 
-#: inc/Pages/Admin.php:151
+#: inc/Pages/Admin.php:150
+msgid "Excluded Ip address"
+msgstr ""
+
+#: inc/Pages/Admin.php:158
+msgid "You can use: 127.0.0.0 | 127.0.0.* | 10.0.0.0/8"
+msgstr ""
+
+#: inc/Pages/Admin.php:165
 msgid "Date of starting maintenance mode"
 msgstr ""
 
-#: inc/Pages/Admin.php:163
+#: inc/Pages/Admin.php:176
 msgid "Date of ending maintenance mode"
 msgstr ""
 
-#: templates/admin.php:10 templates/admin.php:15 templates/admin.php:43
+#: templates/admin.php:11 templates/admin.php:16 templates/admin.php:44
 msgid "Main Settings"
 msgstr ""
 
-#: templates/admin.php:18 templates/admin.php:21 templates/admin.php:54
+#: templates/admin.php:19 templates/admin.php:22 templates/admin.php:55
 msgid "IP Management"
 msgstr ""
 
-#: templates/admin.php:24 templates/admin.php:27 templates/admin.php:71
+#: templates/admin.php:25 templates/admin.php:28 templates/admin.php:109
 msgid "Schedule"
 msgstr ""
 
-#: templates/admin.php:30 templates/admin.php:33 templates/admin.php:105
+#: templates/admin.php:31 templates/admin.php:34 templates/admin.php:156
 msgid "About plugin"
 msgstr ""
 
-#: templates/admin.php:55
+#: templates/admin.php:56
 msgid ""
 "IP whitelisting is a security feature used for limiting and controlling "
 "access only to trusted users. IP whitelisting allows you to create lists of "
@@ -87,7 +129,7 @@ msgid ""
 "without seeing maintenance page."
 msgstr ""
 
-#: templates/admin.php:58
+#: templates/admin.php:57
 msgid ""
 "Please note that most home networks are likely to have a dynamic IP address. "
 "A dynamic IP address is an IP address that changes from time to time unlike "
@@ -98,11 +140,63 @@ msgid ""
 "and you are assigned a new IP address."
 msgstr ""
 
-#: templates/admin.php:59
+#: templates/admin.php:65
+msgid "Excluded IP addresses"
+msgstr ""
+
+#: templates/admin.php:69
+msgid "Start IP address"
+msgstr ""
+
+#: templates/admin.php:70
+msgid "End IP address"
+msgstr ""
+
+#: templates/admin.php:71 templates/admin.php:128
+msgid "Remove"
+msgstr ""
+
+#: templates/admin.php:83
+msgid "Includes your IP address"
+msgstr ""
+
+#: templates/admin.php:96
+msgid "Add new IP address"
+msgstr ""
+
+#: templates/admin.php:97
 msgid "Your IP address: "
 msgstr ""
 
-#: templates/admin.php:106
+#: templates/admin.php:110
+msgid ""
+"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam nemo ducimus "
+"eius, magnam error quisquam sunt\n"
+"            voluptate labore, excepturi numquam! Alias libero optio sed "
+"harum debitis! Veniam, quia in eum."
+msgstr ""
+
+#: templates/admin.php:122
+msgid "Scheduled maintenance"
+msgstr ""
+
+#: templates/admin.php:126
+msgid "Start date"
+msgstr ""
+
+#: templates/admin.php:127
+msgid "End date"
+msgstr ""
+
+#: templates/admin.php:147
+msgid "Schedule new maintenance time"
+msgstr ""
+
+#: templates/admin.php:148
+msgid "Current time:"
+msgstr ""
+
+#: templates/admin.php:157
 msgid ""
 "Maintenance Mode Plugin is a small plugin that replaces your website with a "
 "splash page which explains why it's offline and when you can expect it to be "
@@ -110,38 +204,46 @@ msgid ""
 "whitelisting."
 msgstr ""
 
-#: templates/admin.php:108
+#: templates/admin.php:159
 msgid "Authors"
 msgstr ""
 
-#: templates/admin.php:109
+#: templates/admin.php:160
 msgid "Tymoteusz 'RazorMeister' Bartnik & Przemysław 'lavar3l' Dominikowski"
 msgstr ""
 
-#: templates/admin.php:111
+#: templates/admin.php:162
 msgid "Repository"
 msgstr ""
 
-#: templates/admin.php:112
+#: templates/admin.php:163
 msgid "Feel free to visit our"
 msgstr ""
 
-#: templates/admin.php:112
+#: templates/admin.php:163
 msgid "GitHub repository!"
 msgstr ""
 
-#: templates/admin.php:114
+#: templates/admin.php:165
 msgid "License"
 msgstr ""
 
-#: templates/admin.php:115
+#: templates/admin.php:166
 msgid ""
 "This work is licensed under the European Union Public License v. 1.2. For "
 "further details visit our"
 msgstr ""
 
-#: templates/admin.php:115
+#: templates/admin.php:166
 msgid "GitHub repo"
+msgstr ""
+
+#: templates/themes/default/info.php:4
+msgid "Default Theme"
+msgstr ""
+
+#: templates/themes/default/info.php:5
+msgid "Our beautiful default theme by Przemysław Dominikowski"
 msgstr ""
 
 #: templates/themes/modern/info.php:4

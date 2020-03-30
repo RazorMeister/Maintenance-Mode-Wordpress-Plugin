@@ -45,17 +45,19 @@ class Maintenance extends BaseController
     {
         $isEnabled = $this->options['enabled'];
 
-        if (!$isEnabled)
-            return;
+        if (!$this->isPreview()) {
+            if (!$isEnabled)
+                return;
 
-        if ((defined('DOING_CRON') && DOING_CRON)
-            || (defined('DOING_AJAX') && DOING_AJAX)
-            || (defined('WP_CLI') && WP_CLI)
-            || $this->isAdmin
-            || is_user_logged_in()
-            || $this->isAllowedUrl()
-            || $this->isAllowedIp())
-            return;
+            if ((defined('DOING_CRON') && DOING_CRON)
+                || (defined('DOING_AJAX') && DOING_AJAX)
+                || (defined('WP_CLI') && WP_CLI)
+                || $this->isAdmin
+                || is_user_logged_in()
+                || $this->isAllowedUrl()
+                || $this->isAllowedIp())
+                return;
+        }
 
         $this->showMaintenancePage();
         exit();
@@ -91,6 +93,16 @@ class Maintenance extends BaseController
         }
 
         return false;
+    }
+
+    /**
+     * Check if preview get var is set.
+     *
+     * @return bool
+     */
+    private function isPreview()
+    {
+        return (isset($_GET['maintenanceModePreview']) && $_GET['maintenanceModePreview']);
     }
 
     /**
