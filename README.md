@@ -21,10 +21,20 @@ This is a simple maintenance mode plugin for WordPress website that allows you t
 - About plugin
 
 ## Screenshots
-** Screenschots **
+![](https://imgur.com/7aBiaBW.png)
+
+![](https://imgur.com/frtbXl8.png)
+
+![](https://imgur.com/ShFpGj7.png)
+
+![](https://imgur.com/ACmSXGy.png)
+
+![](https://imgur.com/PJhICBu.png)
+
+![](https://imgur.com/UT3haSQ.png)
 
 ## Status
-Project is: _in_progress_.
+Project is: _finished (Ver. 1.0)_.
 
 ## Contact
 **Feel free to contact us!**
