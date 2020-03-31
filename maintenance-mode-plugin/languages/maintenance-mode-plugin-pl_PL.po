@@ -3,8 +3,8 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10 >= 2 && n%10<=4 "
 "&&(n%100<10||n%100 >= 20)? 1 : 2);\n"
 "Project-Id-Version: Maintenance Mode Plugin\n"
-"POT-Creation-Date: 2020-03-17 12:08+0100\n"
-"PO-Revision-Date: 2020-03-17 18:06+0000\n"
+"POT-Creation-Date: 2020-03-30 21:11+0200\n"
+"PO-Revision-Date: 2020-03-30 19:35+0000\n"
 "Last-Translator: 4pancerni <battnik90@gmail.com>\n"
 "Language-Team: Polski\n"
 "MIME-Version: 1.0\n"
@@ -24,112 +24,293 @@ msgstr ""
 "Language: pl_PL\n"
 "X-Loco-Version: 2.3.1; wp-5.3.2"
 
-#: inc/Pages/Admin.php:33
+#: inc/API/Callbacks/SettingsCallbacks.php:44
+msgid "Specified ip address is incorrect!"
+msgstr "Podany adres IP jest niepoprawny!"
+
+#: inc/API/Callbacks/SettingsCallbacks.php:46
+msgid "You have to set ip!"
+msgstr "Musisz podać adres IP!"
+
+#: inc/API/Callbacks/SettingsCallbacks.php:99
+msgid "Date of end cannot be earlier than date od start!"
+msgstr "Końcowa data nie może być wcześniejsza niż data początkowa."
+
+#: inc/API/Callbacks/SettingsCallbacks.php:101
+msgid "Date format is incorrect!"
+msgstr "Wprowadzona data jest w nieprawidłowym formacie!"
+
+#: inc/API/Callbacks/SettingsCallbacks.php:104
+msgid "You have to set date start and end!"
+msgstr "Musisz podać datę początkową i końcową!"
+
+#: inc/API/Callbacks/SettingsCallbacks.php:132
+msgid "Enabled by schedule settings"
+msgstr "Włączony przez ustawienia harmonogramu"
+
+#: inc/Base/AdminBar.php:50 templates/admin.php:3
+msgid "Preview"
+msgstr "Podgląd"
+
+#: inc/Base/AdminBar.php:57
+msgid "Settings"
+msgstr "Ustawienia"
+
+#: inc/Extra/Theme.php:38
+msgid "Error while loading theme: "
+msgstr "Błąd podczas ładowania motywu:"
+
+#: inc/Pages/Admin.php:39
 msgid "Maintenance mode plugin settings"
-msgstr "Tytuł strony"
+msgstr "Ustawienia wtyczki Maintenance Mode Plugin"
 
-#: inc/Pages/Admin.php:84
+#: inc/Pages/Admin.php:99
 msgid "Maintenance mode enabled"
-msgstr "Tryb maintenance aktywny"
+msgstr "Tryb konserwacji jest włączony"
 
-#: inc/Pages/Admin.php:95
+#: inc/Pages/Admin.php:106
+msgid "Enable \\ Disable"
+msgstr "Włącz \\ Wyłącz"
+
+#: inc/Pages/Admin.php:111
+msgid "Select theme"
+msgstr "Wybierz motyw"
+
+#: inc/Pages/Admin.php:122
 msgid "Site title"
 msgstr "Tytuł strony"
 
-#: inc/Pages/Admin.php:101
-msgid "My very good website"
-msgstr "Moja świetna strona"
+#: inc/Pages/Admin.php:130
+msgid "Title of your site"
+msgstr "Tytuł Twojej strony"
 
-#: inc/Pages/Admin.php:107
+#: inc/Pages/Admin.php:135
 msgid "Site description"
 msgstr "Opis strony"
 
-#: inc/Pages/Admin.php:113
-msgid "This is my website description"
-msgstr "To opisik mojej strony"
+#: inc/Pages/Admin.php:143
+msgid "Your site description"
+msgstr "Opis Twojej strony"
 
-#: inc/Pages/Admin.php:121
-msgid "Excluded Ip addresses (separated by comma)"
-msgstr "Wykluczone adresy ip (po przecinku)"
+#: inc/Pages/Admin.php:150
+msgid "Excluded Ip address"
+msgstr "Wykluczony adres IP"
 
-#: templates/admin.php:10 templates/admin.php:15 templates/admin.php:43
+#: inc/Pages/Admin.php:158
+msgid "You can use: 127.0.0.0 | 127.0.0.* | 10.0.0.0/8"
+msgstr "Możliwe warianty: 127.0.0.0 | 127.0.0.* | 10.0.0.0/8"
+
+#: inc/Pages/Admin.php:165
+msgid "Date of starting maintenance mode"
+msgstr "Data początkowa trybu konserwacji"
+
+#: inc/Pages/Admin.php:176
+msgid "Date of ending maintenance mode"
+msgstr "Data końcowa trybu konserwacji"
+
+#: templates/admin.php:11 templates/admin.php:16 templates/admin.php:44
 msgid "Main Settings"
-msgstr "Główne ustawienia"
+msgstr "Ustawienia ogólne"
 
-#: templates/admin.php:18 templates/admin.php:21 templates/admin.php:54
+#: templates/admin.php:19 templates/admin.php:22 templates/admin.php:55
 msgid "IP Management"
 msgstr "Zarządzanie IP"
 
-#: templates/admin.php:24 templates/admin.php:27 templates/admin.php:68
+#: templates/admin.php:25 templates/admin.php:28 templates/admin.php:109
 msgid "Schedule"
-msgstr "Zarządzanie czasem"
+msgstr "Harmonogram czasowy"
 
-#: templates/admin.php:30 templates/admin.php:33 templates/admin.php:81
+#: templates/admin.php:31 templates/admin.php:34 templates/admin.php:156
 msgid "About plugin"
-msgstr "O pluginie"
+msgstr "O wtyczce"
 
-#: templates/admin.php:82
+#: templates/admin.php:56
+msgid ""
+"IP whitelisting is a security feature used for limiting and controlling "
+"access only to trusted users. IP whitelisting allows you to create lists of "
+"trusted IP addresses or IP ranges from which you can access your website "
+"without seeing maintenance page."
+msgstr ""
+"Biała lista adresów IP to funkcja odpowiadająca za ograniczenie i kontrolę "
+"dostępu do strony wyłącznie przez zaufanych użytkowników. Biała lista "
+"umożliwia stworzenie zbioru zaufanych adresów IP lub przedziałów adresów IP, "
+"z których będzie możliwy dostęp do Twojej strony bez konieczności "
+"wyświetlania planszy informującej o pracach konserwacyjnych."
+
+#: templates/admin.php:57
+msgid ""
+"Please note that most home networks are likely to have a dynamic IP address. "
+"A dynamic IP address is an IP address that changes from time to time unlike "
+"a static IP address. Instead of one IP address always being allocated to "
+"your home network (static IP), your IP address is pulled from a pool of "
+"addresses and then assigned to your home network by your ISP. After a few "
+"days, weeks or sometimes months that IP address is put back into the pool "
+"and you are assigned a new IP address."
+msgstr ""
+"Zwróć uwagę, że większość domowych sieci wykorzystuje dynamiczne adresy IP. "
+"Dynamiczny adres IP to adres, który w przeciwieństwie do statycznego adresu "
+"IP może zmieniać się od czasu do czasu. Zamiast jednego adresu, przypisanego "
+"na stałe do sieci domowej, adres IP jest pobierany z dostępnej puli adresów, "
+"a następnie przypisywany do sieci domowej przez Twojego dostawcę Internetu. "
+"Po kilku dniach, tygodniach lub czasem miesiącach adres ten może trafić z "
+"powrotem do puli, a Twojej sieci domowej zostanie przyznany nowy adres. "
+
+#: templates/admin.php:65
+msgid "Excluded IP addresses"
+msgstr "Wykluczone adresy IP"
+
+#: templates/admin.php:69
+msgid "Start IP address"
+msgstr "Początkowy adres IP"
+
+#: templates/admin.php:70
+msgid "End IP address"
+msgstr "Końcowy adres IP"
+
+#: templates/admin.php:71 templates/admin.php:128
+msgid "Remove"
+msgstr "Usuń"
+
+#: templates/admin.php:83
+msgid "Includes your IP address"
+msgstr "Zawiera Twój obecny adres IP"
+
+#: templates/admin.php:96
+msgid "Add new IP address"
+msgstr "Dodaj nowy adres IP"
+
+#: templates/admin.php:97
+msgid "Your IP address: "
+msgstr "Twój adres IP:"
+
+#: templates/admin.php:110
+msgid ""
+"Maintenance scheduling is a feature used to plan the time when your website "
+"will have ongoing intended maintenance (such as installing updates, hotfixes "
+"or provisioning major changes). Maintenance mode plugin will activate itself "
+"automatically when the time comes."
+msgstr ""
+"Zarządzanie czasowe to funkcja wykorzystywana do planowania terminów, w "
+"czasie których na Twojej stronie będą trwały zaplanowane prace konserwacyjne "
+"(takie jak instalacja aktualizacji, poprawek bezpieczeństwa lub wprowadzanie "
+"poważnych zmian). Maintenance Mode Plugin automatycznie uruchomi się w "
+"podanych przedziałach czasowych."
+
+#: templates/admin.php:111
+msgid "You can specify multiple date and time ranges."
+msgstr "Możesz wybrać wiele zakresów dat."
+
+#: templates/admin.php:112
+msgid ""
+"If you choose “Modern Theme” the countdown on maintenance page will "
+"automagically count to the first end date."
+msgstr ""
+"Jeżeli wybierzesz motyw „nowoczesny” to licznik na stronie konserwacji "
+"będzie automatycznie odliczać czas do pierwszej daty końcowej."
+
+#: templates/admin.php:122
+msgid "Scheduled maintenance"
+msgstr "Zaplanowane konserwacje"
+
+#: templates/admin.php:126
+msgid "Start date"
+msgstr "Data początkowa"
+
+#: templates/admin.php:127
+msgid "End date"
+msgstr "Data końcowa"
+
+#: templates/admin.php:147
+msgid "Schedule new maintenance time"
+msgstr "Zaplanuj czas konserwacji"
+
+#: templates/admin.php:148
+msgid "Current time:"
+msgstr "Aktualny czas:"
+
+#: templates/admin.php:157
 msgid ""
 "Maintenance Mode Plugin is a small plugin that replaces your website with a "
 "splash page which explains why it's offline and when you can expect it to be "
 "live again. It is possible to operate it manually or using schedule and IP "
 "whitelisting."
 msgstr ""
+"Maintenance Mode Plugin to mała wtyczka, która zastępuje Twoją stronę "
+"internetową specjalną planszą informującą o trwającej konserwacji. Możliwe "
+"jest sterowanie ręczne lub poprzez harmonogramy czasowe lub IP."
 
-#: templates/admin.php:84
+#: templates/admin.php:159
 msgid "Authors"
 msgstr "Autorzy"
 
-#: templates/admin.php:85
+#: templates/admin.php:160
 msgid "Tymoteusz 'RazorMeister' Bartnik & Przemysław 'lavar3l' Dominikowski"
-msgstr ""
+msgstr "Tymoteusz 'RazorMeister' Bartnik & Przemysław 'lavar3l' Dominikowski"
 
-#: templates/admin.php:87
+#: templates/admin.php:162
 msgid "Repository"
 msgstr "Repozytorium"
 
-#: templates/admin.php:88
+#: templates/admin.php:163
 msgid "Feel free to visit our"
-msgstr "Odwiedź nasze"
+msgstr "Zobacz nasze"
 
-#: templates/admin.php:88
+#: templates/admin.php:163
 msgid "GitHub repository!"
-msgstr "Repozytorium GitHub!"
+msgstr "repozytorium GitHub!"
 
-#: templates/admin.php:90
+#: templates/admin.php:165
 msgid "License"
 msgstr "Licencja"
 
-#: templates/admin.php:91
+#: templates/admin.php:166
 msgid ""
 "This work is licensed under the European Union Public License v. 1.2. For "
 "further details visit our"
 msgstr ""
-"Ten plugin jest wydany na licencji European Union Public License v. 1.2. Po "
-"więcej informacji odwiedź"
+"Wtyczka została wydana na licencji European Union Public License v. 1.2. "
+"Więcej szczegółów znajdziesz w"
 
-#: templates/admin.php:91
+#: templates/admin.php:166
 msgid "GitHub repo"
-msgstr "Repozytorium GitHub"
+msgstr "repozytorium GitHub"
+
+#: templates/themes/default/info.php:4
+msgid "Default Theme"
+msgstr "Motyw domyślny"
+
+#: templates/themes/default/info.php:5
+msgid "Our beautiful default theme by Przemysław Dominikowski"
+msgstr "Motyw domyślny stworzony przez Przemysława Dominikowskiego"
+
+#: templates/themes/modern/info.php:4
+msgid "Modern Theme"
+msgstr "Motyw nowoczesny"
+
+#: templates/themes/modern/info.php:5
+msgid "Our beautiful modern theme by Przemysław Dominikowski"
+msgstr "Motyw nowoczesny stworzony przez Przemysława Dominikowskiego"
 
 #. Plugin Name of the plugin/theme
 msgid "Maintenance Mode Plugin"
-msgstr ""
+msgstr "Maintenance Mode Plugin"
 
 #. Plugin URI of the plugin/theme
 msgid "https://github.com/RazorMeister/Maintenance-Mode-Wordpress-Plugin"
-msgstr ""
+msgstr "https://github.com/RazorMeister/Maintenance-Mode-Wordpress-Plugin"
 
 #. Description of the plugin/theme
 msgid ""
 "Wtyczka umożliwiająca ustawienie maintenence mode w wybrancyh godzinach oraz "
 "na wykluczające adresy IP."
 msgstr ""
+"Wtyczka umożliwiająca ustawienie maintenence mode w wybrancyh godzinach oraz "
+"na wykluczające adresy IP."
 
 #. Author of the plugin/theme
 msgid "Tymoteusz `RazorMeister` Bartnik & Przemysław `lavar3l` Dominikowski"
-msgstr ""
+msgstr "Tymoteusz 'RazorMeister' Bartnik & Przemysław 'lavar3l' Dominikowski"
 
 #. Author URI of the plugin/theme
 msgid "http://razormeister.pl"
-msgstr ""
+msgstr "http://razormeister.pl"
