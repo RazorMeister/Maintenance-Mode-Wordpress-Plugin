@@ -112,6 +112,8 @@
             <div class="info-box"><?php _e('If you choose “Modern Theme” the countdown on maintenance page will automagically count to the first end date.', $this->pluginName) ?></div>
             </h3>
             <form action="options.php" method="post">
+                <?php settings_fields($this->prefix . 'schedule'); ?>
+
                 <div class="current-schedules">
                     <div class="tablecontainer">
                         <table>
@@ -145,7 +147,6 @@
                 <h3><?php _e('Schedule new maintenance time', $this->pluginName) ?></h3>
                <?php _e('Current time:', $this->pluginName) ?> <?php echo date('d-m-Y H:i:s', current_time('U')) ?>
                 <?php
-                    settings_fields($this->prefix . 'schedule');
                     do_settings_sections($this->prefix . 'schedule');
                     submit_button(null, 'primary', 'saveSchedule');
                 ?>
@@ -168,46 +169,48 @@
 </div>
 
 <script>
-    let  dateStartIsOpen = false;
-    let  dateEndIsOpen = false;
-    let picker = new SimplePicker({
-        zIndex: 10
-    });
+	jQuery(document).ready(function( $ ) {
+		let  dateStartIsOpen = false;
+		let  dateEndIsOpen = false;
+		let picker = new SimplePicker({
+			zIndex: 10
+		});
 
-    $(".dateStart").click(function() {
-        if (dateStartIsOpen) {
-            picker.close();
-            dateStartIsOpen = false;
-        } else {
-            picker.open();
-            dateStartIsOpen = true;
-        }
-    });
+		$(".dateStart").click(function() {
+			if (dateStartIsOpen) {
+				picker.close();
+				dateStartIsOpen = false;
+			} else {
+				picker.open();
+				dateStartIsOpen = true;
+			}
+		});
 
-    $(".dateEnd").click(function() {
-        if (dateEndIsOpen) {
-            picker.close();
-            dateEndIsOpen = false;
-        } else {
-            picker.open();
-            dateEndIsOpen = true;
-        }
-    });
+		$(".dateEnd").click(function() {
+			if (dateEndIsOpen) {
+				picker.close();
+				dateEndIsOpen = false;
+			} else {
+				picker.open();
+				dateEndIsOpen = true;
+			}
+		});
 
-    picker.on('close', function(date){
-        dateStartIsOpen = false;
-        dateEndIsOpen = false;
-    });
+		picker.on('close', function(date){
+			dateStartIsOpen = false;
+			dateEndIsOpen = false;
+		});
 
 
-    picker.on("submit", function(date, readableDate){
-        if (dateStartIsOpen) {
-            console.log(date);
-            $(".dateStart").val(dayjs(date).format("DD-MM-YYYY HH:mm"));
-            dateStartIsOpen = false;
-        } else {
-            $(".dateEnd").val(dayjs(date).format("DD-MM-YYYY HH:mm"));
-            dateEndIsOpen = false;
-        }
-    });
+		picker.on("submit", function(date, readableDate){
+			if (dateStartIsOpen) {
+				console.log(date);
+				$(".dateStart").val(dayjs(date).format("DD-MM-YYYY HH:mm"));
+				dateStartIsOpen = false;
+			} else {
+				$(".dateEnd").val(dayjs(date).format("DD-MM-YYYY HH:mm"));
+				dateEndIsOpen = false;
+			}
+		});
+	});
 </script>

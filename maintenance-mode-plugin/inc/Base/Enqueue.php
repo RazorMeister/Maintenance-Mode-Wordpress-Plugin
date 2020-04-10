@@ -33,9 +33,9 @@ class Enqueue extends BaseController
         wp_enqueue_style('MaintenanceModePluginAdminDateStyle', $this->pluginUrl.'assets/css/date-picker.css');
 
         /* JavaScript scripts */
-        wp_enqueue_script('MaintenanceModePluginAdminJquery', $this->pluginUrl.'assets/js/jquery.min.js');
-        wp_enqueue_script('MaintenanceModePluginAdminScripts', $this->pluginUrl.'assets/js/admin-scripts.js');
-        wp_enqueue_script('MaintenanceModePluginAdminDate', $this->pluginUrl.'assets/js/date-picker.js');
-        wp_enqueue_script('MaintenanceModePluginAdminDay', $this->pluginUrl.'assets/js/day.min.js');
+        //wp_enqueue_script('MaintenanceModePluginAdminJquery', $this->pluginUrl.'assets/js/jquery.min.js');
+        wp_enqueue_script('MaintenanceModePluginAdminScripts', $this->pluginUrl.'assets/js/admin-scripts.js', ['jquery'], '1.0.0', true);
+        wp_enqueue_script('MaintenanceModePluginAdminDate', $this->pluginUrl.'assets/js/date-picker.js', ['jquery'], '1.0.0', true);
+        wp_enqueue_script('MaintenanceModePluginAdminDay', $this->pluginUrl.'assets/js/day.min.js', ['jquery'], '1.0.0', true);
     }
 }

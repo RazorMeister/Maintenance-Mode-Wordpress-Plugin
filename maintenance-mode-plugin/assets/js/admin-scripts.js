@@ -1,6 +1,6 @@
 const COOKIE_NAME = 'MMP_currentTabId';
 
-$(document).ready(function(){
+(function($) {
     let tabs = document.querySelectorAll(".tabs .tab-control");
 
     let tabIndex = getCookie(COOKIE_NAME);
@@ -29,7 +29,7 @@ $(document).ready(function(){
             })
         }
     });
-});
+})( jQuery );
 
 /**
  * Set cookie.
