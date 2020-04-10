@@ -112,8 +112,6 @@
             <div class="info-box"><?php _e('If you choose “Modern Theme” the countdown on maintenance page will automagically count to the first end date.', $this->pluginName) ?></div>
             </h3>
             <form action="options.php" method="post">
-                <?php settings_fields($this->prefix . 'schedule'); ?>
-
                 <div class="current-schedules">
                     <div class="tablecontainer">
                         <table>
@@ -147,6 +145,7 @@
                 <h3><?php _e('Schedule new maintenance time', $this->pluginName) ?></h3>
                <?php _e('Current time:', $this->pluginName) ?> <?php echo date('d-m-Y H:i:s', current_time('U')) ?>
                 <?php
+                    settings_fields($this->prefix . 'schedule');
                     do_settings_sections($this->prefix . 'schedule');
                     submit_button(null, 'primary', 'saveSchedule');
                 ?>

@@ -81,16 +81,21 @@ class SettingsCallbacks extends BaseController
 
         if ($input['dateStart'] && $input['dateEnd']) {
             try {
-                new \DateTime($input['dateStart']);
-                new \DateTime($input['dateEnd']);
+                if (!is_array($input['dateStart'])) {
+                    new \DateTime($input['dateStart']);
+                    new \DateTime($input['dateEnd']);
 
-                $dateStart = explode(' ', $input['dateStart']);
-                $dateStart = array_merge(explode('-', $dateStart[0]), explode(':', $dateStart[1]));
-                $timeStart = mktime($dateStart[3], $dateStart[4], 0, $dateStart[1], $dateStart[0], $dateStart[2]);
+                    $dateStart = explode(' ', $input['dateStart']);
+                    $dateStart = array_merge(explode('-', $dateStart[0]), explode(':', $dateStart[1]));
+                    $timeStart = mktime($dateStart[3], $dateStart[4], 0, $dateStart[1], $dateStart[0], $dateStart[2]);
 
-                $dateEnd = explode(' ', $input['dateEnd']);
-                $dateEnd = array_merge(explode('-', $dateEnd[0]), explode(':', $dateEnd[1]));
-                $timeEnd = mktime($dateEnd[3], $dateEnd[4], 0, $dateEnd[1], $dateEnd[0], $dateEnd[2]);
+                    $dateEnd = explode(' ', $input['dateEnd']);
+                    $dateEnd = array_merge(explode('-', $dateEnd[0]), explode(':', $dateEnd[1]));
+                    $timeEnd = mktime($dateEnd[3], $dateEnd[4], 0, $dateEnd[1], $dateEnd[0], $dateEnd[2]);
+                } else {
+                    $timeStart = $input['dateStart'][0];
+                    $timeEnd = $input['dateEnd'][0];
+                }
 
                 if ($timeEnd > $timeStart) {
                     $newInput['dateStart'][] = $timeStart;
@@ -103,7 +108,7 @@ class SettingsCallbacks extends BaseController
         } else if (!isset($input['delete']))
             add_settings_error('scheduleSettings', 'scheduleErrorEmpty', __('You have to set date start and end!', $this->pluginName));
 
-        if(isset($input['delete'])) {
+        if (isset($input['delete'])) {
             $toDelete = array_keys($input['delete']);
 
             foreach (array_keys($newInput['dateStart']) as $key)  {
