@@ -1,7 +1,7 @@
 <script src="https://kit.fontawesome.com/77b6468d65.js" crossorigin="anonymous"></script>
-<h1 class="plugintitle-h1">Maintenance Mode Plugin</h1>
-<a class="button button-primary button-preview" href="<?php echo site_url('index.php?maintenanceModePreview=true') ?>" target="_blank"><i class="fa fa-search"></i> <?php _e('Preview', $this->pluginName) ?></a>
-<div class="tabs">
+<h1 class="mmp-plugintitle-h1">Maintenance Mode Plugin</h1>
+<a class="button button-primary mmp-button-preview" href="<?php echo site_url('index.php?maintenanceModePreview=true') ?>" target="_blank"><i class="fa fa-search"></i> <?php _e('Preview', $this->pluginName) ?></a>
+<div class="mmp-tabs">
 
     <input type="radio" id="tab1" name="tab-control" class="tab-control" <?php if((isset($_COOKIE['MMP_currentTabId']) && $_COOKIE['MMP_currentTabId'] == 'tab1') || !isset($_COOKIE['MMP_currentTabId'])) echo 'checked'; ?>>
     <input type="radio" id="tab2" name="tab-control" class="tab-control" <?php if(isset($_COOKIE['MMP_currentTabId']) && $_COOKIE['MMP_currentTabId'] == 'tab2') echo 'checked'; ?>>
