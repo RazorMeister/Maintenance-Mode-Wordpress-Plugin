@@ -1,17 +1,18 @@
 msgid ""
 msgstr ""
-"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10 >= 2 && n%10<=4 "
-"&&(n%100<10||n%100 >= 20)? 1 : 2);\n"
 "Project-Id-Version: Maintenance Mode Plugin\n"
-"POT-Creation-Date: 2020-03-30 21:11+0200\n"
-"PO-Revision-Date: 2020-03-30 19:35+0000\n"
-"Last-Translator: 4pancerni <battnik90@gmail.com>\n"
-"Language-Team: Polski\n"
+"POT-Creation-Date: 2020-04-21 12:43+0200\n"
+"PO-Revision-Date: 2020-04-21 12:46+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: pl_PL\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Loco https://localise.biz/\n"
+"X-Generator: Poedit 2.0.1\n"
 "X-Poedit-Basepath: ..\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
+"|| n%100>=20) ? 1 : 2);\n"
 "X-Poedit-Flags-xgettext: --add-comments=translators:\n"
 "X-Poedit-WPHeader: maintenance-mode-plugin.php\n"
 "X-Poedit-SourceCharset: UTF-8\n"
@@ -20,31 +21,29 @@ msgstr ""
 "_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.js\n"
-"Report-Msgid-Bugs-To: \n"
-"Language: pl_PL\n"
-"X-Loco-Version: 2.3.1; wp-5.3.2"
 
-#: inc/API/Callbacks/SettingsCallbacks.php:44
+#: inc/API/Callbacks/SettingsCallbacks.php:54
 msgid "Specified ip address is incorrect!"
 msgstr "Podany adres IP jest niepoprawny!"
 
-#: inc/API/Callbacks/SettingsCallbacks.php:46
+#: inc/API/Callbacks/SettingsCallbacks.php:56
 msgid "You have to set ip!"
 msgstr "Musisz podać adres IP!"
 
-#: inc/API/Callbacks/SettingsCallbacks.php:99
-msgid "Date of end cannot be earlier than date od start!"
-msgstr "Końcowa data nie może być wcześniejsza niż data początkowa."
+#: inc/API/Callbacks/SettingsCallbacks.php:93
+msgid "You have to specified time before informing users!"
+msgstr ""
+"Musisz podać czas od kiedy informować użytkowników o przerwie technicznej!"
 
-#: inc/API/Callbacks/SettingsCallbacks.php:101
+#: inc/API/Callbacks/SettingsCallbacks.php:121
+msgid "Date of end cannot be earlier than date od start!"
+msgstr "Końcowa data nie może być wcześniejsza niż data początkowa!"
+
+#: inc/API/Callbacks/SettingsCallbacks.php:123
 msgid "Date format is incorrect!"
 msgstr "Wprowadzona data jest w nieprawidłowym formacie!"
 
-#: inc/API/Callbacks/SettingsCallbacks.php:104
-msgid "You have to set date start and end!"
-msgstr "Musisz podać datę początkową i końcową!"
-
-#: inc/API/Callbacks/SettingsCallbacks.php:132
+#: inc/API/Callbacks/SettingsCallbacks.php:153
 msgid "Enabled by schedule settings"
 msgstr "Włączony przez ustawienia harmonogramu"
 
@@ -56,9 +55,13 @@ msgstr "Podgląd"
 msgid "Settings"
 msgstr "Ustawienia"
 
+#: inc/Base/CheckSchedule.php:92
+msgid "Maintenance mode is starting in: "
+msgstr "Przerwa techniczna zacznie się za : "
+
 #: inc/Extra/Theme.php:38
 msgid "Error while loading theme: "
-msgstr "Błąd podczas ładowania motywu:"
+msgstr "Błąd podczas ładowania motywu: "
 
 #: inc/Pages/Admin.php:39
 msgid "Maintenance mode plugin settings"
@@ -108,6 +111,17 @@ msgstr "Data początkowa trybu konserwacji"
 msgid "Date of ending maintenance mode"
 msgstr "Data końcowa trybu konserwacji"
 
+#: inc/Pages/Admin.php:187
+msgid "Inform users about coming maintenance mode"
+msgstr "Informuj użytkowników o nadchodzącej przerwie technicznej"
+
+#: inc/Pages/Admin.php:198
+msgid ""
+"Time Before the maintenance mode the user should be informed (in minutes)"
+msgstr ""
+"Czas przed jakim użytkownicy będą informowaniu o przerwie technicznej (w "
+"minutach)"
+
 #: templates/admin.php:11 templates/admin.php:16 templates/admin.php:44
 msgid "Main Settings"
 msgstr "Ustawienia ogólne"
@@ -153,7 +167,7 @@ msgstr ""
 "na stałe do sieci domowej, adres IP jest pobierany z dostępnej puli adresów, "
 "a następnie przypisywany do sieci domowej przez Twojego dostawcę Internetu. "
 "Po kilku dniach, tygodniach lub czasem miesiącach adres ten może trafić z "
-"powrotem do puli, a Twojej sieci domowej zostanie przyznany nowy adres. "
+"powrotem do puli, a Twojej sieci domowej zostanie przyznany nowy adres.s"
 
 #: templates/admin.php:65
 msgid "Excluded IP addresses"
@@ -181,7 +195,7 @@ msgstr "Dodaj nowy adres IP"
 
 #: templates/admin.php:97
 msgid "Your IP address: "
-msgstr "Twój adres IP:"
+msgstr "Twój adres IP: "
 
 #: templates/admin.php:110
 msgid ""
@@ -314,3 +328,6 @@ msgstr "Tymoteusz 'RazorMeister' Bartnik & Przemysław 'lavar3l' Dominikowski"
 #. Author URI of the plugin/theme
 msgid "http://razormeister.pl"
 msgstr "http://razormeister.pl"
+
+#~ msgid "You have to set date start and end!"
+#~ msgstr "Musisz podać datę początkową i końcową!"

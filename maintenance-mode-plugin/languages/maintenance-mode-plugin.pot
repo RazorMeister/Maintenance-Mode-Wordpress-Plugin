@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "Project-Id-Version: Maintenance Mode Plugin\n"
-"POT-Creation-Date: 2020-03-30 21:11+0200\n"
-"PO-Revision-Date: 2020-03-30 21:11+0200\n"
+"POT-Creation-Date: 2020-04-21 12:47+0200\n"
+"PO-Revision-Date: 2020-04-21 12:46+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -21,27 +21,27 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.js\n"
 
-#: inc/API/Callbacks/SettingsCallbacks.php:44
+#: inc/API/Callbacks/SettingsCallbacks.php:54
 msgid "Specified ip address is incorrect!"
 msgstr ""
 
-#: inc/API/Callbacks/SettingsCallbacks.php:46
+#: inc/API/Callbacks/SettingsCallbacks.php:56
 msgid "You have to set ip!"
 msgstr ""
 
-#: inc/API/Callbacks/SettingsCallbacks.php:99
+#: inc/API/Callbacks/SettingsCallbacks.php:93
+msgid "You have to specified time before informing users!"
+msgstr ""
+
+#: inc/API/Callbacks/SettingsCallbacks.php:121
 msgid "Date of end cannot be earlier than date od start!"
 msgstr ""
 
-#: inc/API/Callbacks/SettingsCallbacks.php:101
+#: inc/API/Callbacks/SettingsCallbacks.php:123
 msgid "Date format is incorrect!"
 msgstr ""
 
-#: inc/API/Callbacks/SettingsCallbacks.php:104
-msgid "You have to set date start and end!"
-msgstr ""
-
-#: inc/API/Callbacks/SettingsCallbacks.php:132
+#: inc/API/Callbacks/SettingsCallbacks.php:153
 msgid "Enabled by schedule settings"
 msgstr ""
 
@@ -51,6 +51,10 @@ msgstr ""
 
 #: inc/Base/AdminBar.php:57
 msgid "Settings"
+msgstr ""
+
+#: inc/Base/CheckSchedule.php:92
+msgid "Maintenance mode is starting in: "
 msgstr ""
 
 #: inc/Extra/Theme.php:38
@@ -103,6 +107,15 @@ msgstr ""
 
 #: inc/Pages/Admin.php:176
 msgid "Date of ending maintenance mode"
+msgstr ""
+
+#: inc/Pages/Admin.php:187
+msgid "Inform users about coming maintenance mode"
+msgstr ""
+
+#: inc/Pages/Admin.php:198
+msgid ""
+"Time Before the maintenance mode the user should be informed (in minutes)"
 msgstr ""
 
 #: templates/admin.php:11 templates/admin.php:16 templates/admin.php:44

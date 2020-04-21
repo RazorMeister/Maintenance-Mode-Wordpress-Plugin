@@ -36,6 +36,10 @@ class SettingsCallbacks extends BaseController
 
         $newInput['ipWhitelist'] = $old;
 
+        foreach ($input as $key => $value)
+            if (!in_array($key, ['ipWhitelist', 'delete']))
+                $newInput[$key] = $value;
+
         if ($input['ipWhitelist']) {
             if (!is_array($input['ipWhitelist']))
                 $ip = $input['ipWhitelist'];
@@ -85,6 +89,13 @@ class SettingsCallbacks extends BaseController
         $newInput['dateStart'] = $oldStarts;
         $newInput['dateEnd'] = $oldEnds;
 
+        if ($input['informBefore'] && !$input['informBeforeTime'])
+            add_settings_error('scheduleSettings', 'scheduleErrorNoInformBeforeTime', __('You have to specified time before informing users!', $this->pluginName));
+        else
+            foreach ($input as $key => $value)
+                if (!in_array($key, ['dateStart', 'dateEnd', 'delete']))
+                    $newInput[$key] = $value;
+
         if ($input['dateStart'] && $input['dateEnd']) {
             try {
                 if (!is_array($input['dateStart'])) {
@@ -111,8 +122,7 @@ class SettingsCallbacks extends BaseController
             } catch (\Exception $e) {
                 add_settings_error('scheduleSettings', 'scheduleErrorIncorrect', __('Date format is incorrect!', $this->pluginName));
             }
-        } else if (!isset($input['delete']))
-            add_settings_error('scheduleSettings', 'scheduleErrorEmpty', __('You have to set date start and end!', $this->pluginName));
+        }
 
         if (isset($input['delete'])) {
             $toDelete = array_keys($input['delete']);
@@ -139,7 +149,7 @@ class SettingsCallbacks extends BaseController
 
         echo '<div class="enabled-input"><input type="checkbox" style="display: none" class="tgl tgl-flat" id="'.$args['name'].'" ' . 'name="'.$this->getFullName($args).'" '.($value ? 'checked' : '').'>' . '<label class="tgl-btn"' . ' for="' . $args['name'] .'"></label>';
 
-        if (BaseController::$isSchedule)
+        if ($args['name'] == 'enabled' && BaseController::$isSchedule)
             echo '<p class="enabled-by-schedule">['.__('Enabled by schedule settings', $this->pluginName).']</p>';
 
         echo '</div>';
@@ -157,6 +167,20 @@ class SettingsCallbacks extends BaseController
         $value = $this->getOption($args);
 
         echo '<input type="text" class="" name="'.$this->getFullName($args).'" value="'.$value.'" placeholder="'.$args['placeholder'].'">';
+
+        $this->addDescription($args);
+    }
+
+    /**
+     * Render number field.
+     *
+     * @param $args
+     */
+    public function numberField($args)
+    {
+        $value = $this->getOption($args);
+
+        echo '<input type="number" class="" name="'.$this->getFullName($args).'" value="'.$value.'">';
 
         $this->addDescription($args);
     }

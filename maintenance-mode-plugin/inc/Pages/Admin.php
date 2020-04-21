@@ -182,6 +182,28 @@ class Admin extends BaseController
                     'settings' => $this->prefix.'schedule',
                 ]
             ],
+            [
+                'id' => 'informBefore',
+                'title' => __('Inform users about coming maintenance mode', $this->pluginName),
+                'callback' => [$this->settingsCallbacks, 'enableField'],
+                'page' => $this->prefix . 'schedule',
+                'section' => $this->prefix . 'scheduleSection',
+                'args' => [
+                    'name' => 'informBefore',
+                    'settings' => $this->prefix.'schedule',
+                ]
+            ],
+            [
+                'id' => 'informBeforeTime',
+                'title' => __('Time Before the maintenance mode the user should be informed (in minutes)', $this->pluginName),
+                'callback' => [$this->settingsCallbacks, 'numberField'],
+                'page' => $this->prefix . 'schedule',
+                'section' => $this->prefix . 'scheduleSection',
+                'args' => [
+                    'name' => 'informBeforeTime',
+                    'settings' => $this->prefix.'schedule',
+                ]
+            ],
         ];
 
         $this->settings->setFields($args);
