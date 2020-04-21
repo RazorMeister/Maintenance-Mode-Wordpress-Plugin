@@ -1,15 +1,18 @@
 const COOKIE_NAME = 'MMP_currentTabId';
 
 (function($) {
-    let tabs = document.querySelectorAll(".tabs .tab-control");
+    $(document).ready(function() {
+        let tabs = document.querySelectorAll(".mmp-tabs .tab-control");
 
-    let tabIndex = getCookie(COOKIE_NAME);
+        let tabIndex = getCookie(COOKIE_NAME);
 
-    for (let i = 0; i < tabs.length; i++)
-        tabs[i].addEventListener("click", switchTab);
+        for (let i = 0; i < tabs.length; i++)
+            tabs[i].addEventListener("click", switchTab);
+    });
 
     function switchTab(event)
     {
+        alert('elo');
         setCookie(COOKIE_NAME, event.currentTarget.id, 2);
     }
 

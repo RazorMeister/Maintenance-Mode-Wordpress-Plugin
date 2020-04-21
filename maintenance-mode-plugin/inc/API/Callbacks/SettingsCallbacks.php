@@ -37,9 +37,15 @@ class SettingsCallbacks extends BaseController
         $newInput['ipWhitelist'] = $old;
 
         if ($input['ipWhitelist']) {
-            $range = \IPLib\Factory::rangeFromString($input['ipWhitelist']);
+            if (!is_array($input['ipWhitelist']))
+                $ip = $input['ipWhitelist'];
+            else
+                $ip = $input['ipWhitelist'][0];
+
+            $range = \IPLib\Factory::rangeFromString($ip);
+
             if ($range) {
-                $newInput['ipWhitelist'][] = $input['ipWhitelist'];
+                $newInput['ipWhitelist'][] = $ip;
             } else
                 add_settings_error('ipWhitelistSettings', 'ipWhitelistIncorrect', __('Specified ip address is incorrect!', $this->pluginName));
         } else if (!isset($input['delete']))
