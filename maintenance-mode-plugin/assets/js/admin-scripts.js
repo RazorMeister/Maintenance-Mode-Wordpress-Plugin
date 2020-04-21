@@ -12,7 +12,6 @@ const COOKIE_NAME = 'MMP_currentTabId';
 
     function switchTab(event)
     {
-        alert('elo');
         setCookie(COOKIE_NAME, event.currentTarget.id, 2);
     }
 
